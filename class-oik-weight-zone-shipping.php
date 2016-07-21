@@ -261,6 +261,61 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		} 
 		return( $new_array );
 	}
+	
+	/**
+	 * Picks the right rate from available rates based on cart weight
+	 * 
+	 * If you want to set a weight at which shipping is free
+	 * then set a rate for the weight at the limit, and another way above the limit to 0
+	 *
+	 * e.g.
+	 * `
+	 * 50|100.00| Not free up to and including 50
+	 * 999|0.00| Free above 50, up to 999
+	 * 1000| X | Maximum weight supported is 999
+   * `
+	 * 
+	 * If the weight is above this highest value then the most expensive rate is chosen.
+	 * This is rather silly logic... but it'll do for the moment.
+	 * 
+	 * We also set the shipping rate title for the selected rate.  
+	 * 
+	 * @param array $rates 
+	 * @param string $weight - the cart weight 
+	 * @return - rate - may be false if no rate can be determined
+	 */
+	function pick_smallest_rate( $rates_array, $weight) {
+		$rate = null;
+		$max_rate = false;
+		$found_weight = -1;
+		$found = false;
+		if ( sizeof( $rates_array ) > 0) {
+		  $rates = $this->sort_ascending( $rates_array );
+			//bw_trace2( $rates, "rates" );
+			foreach ( $rates as $key => $value) {
+				if ( $weight <= $value[0] && ( $found_weight < $weight ) ) {
+					if ( true || null === $rate || $value[1] < $rate ) {
+						$rate = $value[1];
+						//bw_trace2( $rate, "rate is now", false );
+						$found_weight = $value[0];
+						$found = true;
+						$this->set_shippingrate_title( $value );
+					}   
+				}
+				if ( !$found  ) {
+					if ( !$max_rate || $value[1] > $max_rate ) {
+						$max_rate = $value[1];
+						$this->set_shippingrate_title( $value );
+					}
+				}   
+			}
+		}
+		if ( null === $rate ) {
+			$rate = $max_rate;
+			//$rate = false;
+		}  
+		return $rate;
+	}
 
 	/**
 	 * Implement "woocommerce_cart_no_shipping_available_html" 
