@@ -1,41 +1,3 @@
-<?php
-/**
- * Plugin Name: oik Weight/Country Shipping
- * Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-weightcountry-shipping
- * Description: WooCommerce extension for Weight/Country shipping
- * Version: 1.3.2
- * Author: bobbingwide
- * Author URI: http://www.oik-plugins.com/author/bobbingwide
- * License: GPL2
- * Text Domain: oik-weightcountry-shipping
- * Domain Path: /languages/
- 
-    Copyright Bobbing Wide 2014,2015 ( email : herb@bobbingwide.com ) 
-    Copyright 2012 andyswebdesign.ie 
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    The license for this software can likely be found here:
-    http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
-
-/**
- * Implement "plugins_loaded" action for oik-weightcountry-shipping
- * 
- */
-function init_oik_shipping() {
-
-	if ( !class_exists( 'WC_Shipping_Method' ) ) {
-    return;
-  }
 
   /**
    * Weight/Country shipping class WooCommerce Extension
@@ -384,35 +346,3 @@ function init_oik_shipping() {
 
 	} // end OIK_Shipping
 }
-
-  
-/**
- * Implement 'woocommerce_shipping_methods' filter for oik-weightcountry-shipping
- *
- * @param array $methods array of shipping method classes
- * @return array array with "OIK_shipping" included
- */  
-function add_oik_shipping( $methods ) {
-	$methods[] = 'OIK_Shipping';
-	return $methods;
-}
-
-/**
- * Implement 'woocommerce_init' to load l10n versions and then initialise weight/country shipping
- * 
- */
-function init_oik_weightcountry_l10n() {
-	load_plugin_textdomain( "oik-weightcountry-shipping", false, 'oik-weightcountry-shipping/languages' );
-	init_oik_shipping();
-}
-	
-//add_action( 'plugins_loaded', 'init_oik_shipping', 0 );
-add_filter( 'woocommerce_shipping_methods', 'add_oik_shipping' );
-add_action( 'woocommerce_init', 'init_oik_weightcountry_l10n' );
-
-if ( !function_exists( "bw_trace2" ) ) {
-  function bw_trace2( $p=null ) { return $p; }
-	function bw_backtrace() {}
-}
-
-
