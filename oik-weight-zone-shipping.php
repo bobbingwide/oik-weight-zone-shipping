@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: oik Weight Zone Shipping
+ * Plugin Name: oik weight zone shipping
  * Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
- * Description: Weight Zone shipping for WooCommerce 2.6
+ * Description: Weight zone shipping for WooCommerce 2.6
  * Version: 0.0.0
  * Author: bobbingwide
  * Author URI: http://www.oik-plugins.com/author/bobbingwide
@@ -41,9 +41,8 @@ function oik_weight_zone_woocommerce_shipping_methods( $methods ) {
  * 
  */
 function oik_weight_zone_woocommerce_shipping_init() {
-	load_plugin_textdomain( "oik-weight-zone-shipping", false, 'oik-weight-zone-shipping/languages' );
-	init_oik_shipping();
 	if ( class_exists( 'WC_Shipping_Method' ) ) {
+		load_plugin_textdomain( "oik-weight-zone-shipping", false, 'oik-weight-zone-shipping/languages' );
 		require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
   }
 }
