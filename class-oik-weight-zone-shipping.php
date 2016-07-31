@@ -99,6 +99,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					'desc_tip'    => true,
 
 				),
+				'options'       => array(
+					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
+					'type'        => 'textarea',
+					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|Standard rate <br />For decimal, use a dot not a comma.', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ) ),
+					'default'     => '',
+					'desc_tip'    => false,
+					'placeholder'	=> 'max weight | cost | Method title override',
+				),
 				'tax_status' => array(
 					'title'       => __( 'Tax Status', 'woocommerce' ),
 					'type'        => 'select',
@@ -116,12 +124,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					'type'        => 'text',
 					'description' => __( 'Fee excluding tax, e.g. 3.50. Leave blank to disable.', 'oik-weight-zone-shipping' ),
 					'default'     => '',
-				),
-				'options'       => array(
-					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
-					'type'        => 'textarea',
-					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line). <br /> Syntax: Max weight|Cost|Method Title override<br />Example: 10|6.95|Standard rate <br />For decimal, use a dot not a comma.', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ) ),
-					'default'     => '',
+					'desc_tip'		=> true,
 				),
 		);
 	}
