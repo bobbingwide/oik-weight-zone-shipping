@@ -43,7 +43,9 @@ function oik_weight_zone_woocommerce_shipping_methods( $methods ) {
 function oik_weight_zone_woocommerce_shipping_init() {
 	if ( class_exists( 'WC_Shipping_Method' ) ) {
 		load_plugin_textdomain( "oik-weight-zone-shipping", false, 'oik-weight-zone-shipping/languages' );
-		require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
+		if ( !class_exists( "OIK_Weight_Zone_Shipping" ) ) {
+			require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
+		}
   }
 }
 	
