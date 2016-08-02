@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik weight zone shipping 0.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2016-07-31 21:38:05+00:00\n"
+"POT-Creation-Date: 2016-08-01 12:07:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
@@ -15,39 +15,39 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 #: class-oik-weight-zone-shipping.php:38
 msgid "Weight Zone"
-msgstr "Wghiet Znoe"
+msgstr "Weghit Znoe"
 
 #: class-oik-weight-zone-shipping.php:39
 msgid "Lets you charge based on cart weight."
-msgstr "Ltes yOU caghre bsead On cart wheigt."
+msgstr "Ltes yOU chrgae based On crat wgieht."
 
 #: class-oik-weight-zone-shipping.php:40
 msgid "Weight and zone based shipping"
-msgstr "Wgheit And znoe besad shiipnpg"
+msgstr "Whgeit And znoe baesd shinppig"
 
 #: class-oik-weight-zone-shipping.php:41
 msgid "Define rates for shipping by weight and zone"
-msgstr "Dnfiee retas fOr snpihpig by whegit And znoe"
+msgstr "Denfie retas fOr sihpping by wiehgt And znoe"
 
 #: class-oik-weight-zone-shipping.php:95
 msgid "Method Title"
-msgstr "Metohd Tltie"
+msgstr "Meothd Ttile"
 
 #: class-oik-weight-zone-shipping.php:97
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
 msgstr ""
-"ThE ttile whcih thE uesr sees dirung cuhkocet, If nOt denfied In Sinhippg "
-"Reats."
+"ThE tilte wcihh thE user sees dinurg cueokhct, If nOt denefid In Snphipig "
+"Retas."
 
 #: class-oik-weight-zone-shipping.php:98
 msgid "Weight zone shipping"
-msgstr "Wehigt znoe spiihnpg"
+msgstr "Wghiet znoe sinhppig"
 
 #: class-oik-weight-zone-shipping.php:103
 msgid "Shipping Rates"
-msgstr "Shpnipig Rtaes"
+msgstr "Snhpipig Rteas"
 
 #: class-oik-weight-zone-shipping.php:105
 msgid ""
@@ -55,34 +55,34 @@ msgid ""
 "<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|"
 "Standard rate <br />For decimal, use a dot not a comma."
 msgstr ""
-"SEt yuor whegit baesd retas In %1$s fOr tihs snpiphig znoe (OnE pEr line)."
-"<br /> Fomart: MAx whiegt|Cost|Mthoed Ttile override<br />Example: 10|6.95|"
-"Stardnad rate <br />For dmcieal, UsE A dOt nOt A cmoma."
+"SEt yuor wgheit based reats In %1$s fOr this sipihpng znoe (OnE pEr lnie)."
+"<br /> Framot: MAx wgihet|Csot|Mthoed Tltie override<br />Example: 10|6.95|"
+"Saratdnd rtae <br />For dacmiel, UsE A dOt nOt A cmoma."
 
 #: class-oik-weight-zone-shipping.php:111
 msgid "Tax Status"
-msgstr "TAx Satuts"
+msgstr "TAx Sattus"
 
 #: class-oik-weight-zone-shipping.php:117
 msgid "Taxable"
-msgstr "Tbxalae"
+msgstr "Txbaale"
 
 #: class-oik-weight-zone-shipping.php:118
 msgctxt "Tax status"
 msgid "None"
-msgstr "None"
+msgstr "Nnoe"
 
 #: class-oik-weight-zone-shipping.php:123
 msgid "Handling Fee"
-msgstr "Hdnilnag FEE"
+msgstr "Hniandlg FEE"
 
 #: class-oik-weight-zone-shipping.php:125
 msgid "Fee excluding tax, e.g. 3.50. Leave blank to disable."
-msgstr "FEE exnucdilg tAx, E.g. 3.50. Levae blank tO dlbaise."
+msgstr "FEE elixcundg tAx, E.g. 3.50. Lvaee balnk tO dlsibae."
 
 #. Plugin Name of the plugin/theme
 msgid "oik weight zone shipping"
-msgstr "OIk wgehit znoe sniihppg"
+msgstr "OIk wegiht znoe sihpping"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
@@ -90,11 +90,11 @@ msgstr "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
 
 #. Description of the plugin/theme
 msgid "Weight zone shipping for WooCommerce 2.6"
-msgstr "Wiehgt znoe siphinpg fOr WocmroeomCe 2.6"
+msgstr "Wgehit znoe sppiinhg fOr WomcCmoeroe 2.6"
 
 #. Author of the plugin/theme
 msgid "bobbingwide"
-msgstr "boibgnibdwe"
+msgstr "binbibgwode"
 
 #. Author URI of the plugin/theme
 msgid "http://www.oik-plugins.com/author/bobbingwide"
