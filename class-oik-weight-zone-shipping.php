@@ -4,6 +4,7 @@
  * Single rate weight zone shipping class WooCommerce Extension
  *
  * Implements single rate shipping charges by weight and shipping zone
+ * Depends on WooCommerce 2.6 or higher
  *  
  */
 class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
