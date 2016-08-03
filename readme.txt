@@ -77,10 +77,11 @@ and [Multi rate weight shipping for WooCommerce 2.6 FAQ's](http://www.oik-plugin
 
 == Screenshots ==
 1. Add Shipping Method for Weight zone shipping
-2. tbc
-x. Weight and Country shipping settings part two
-y. WooCommerce Checkout shipping rate
-z. Enable Shipping Debug Mode when modifying rates
+2. Weight zone shipping rates
+3. Weight zone settings - modal
+4. Cart totals
+5. Checkout shipping rate
+6. Shipping debug mode
 
 == Upgrade Notice ==
 
