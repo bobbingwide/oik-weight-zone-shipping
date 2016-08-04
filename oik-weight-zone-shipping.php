@@ -3,7 +3,7 @@
  * Plugin Name: oik weight zone shipping
  * Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
  * Description: Weight zone shipping for WooCommerce 2.6
- * Version: 0.0.0
+ * Version: 0.0.1
  * Author: bobbingwide
  * Author URI: http://www.oik-plugins.com/author/bobbingwide
  * License: GPL2

@@ -4,7 +4,7 @@ Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce, commerce, ecommerce, shop
 Requires at least: 4.5.2
 Tested up to: 4.6-RC1
-Stable tag: 0.0.0
+Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,8 @@ and [Multi rate weight shipping for WooCommerce 2.6 FAQ's](http://www.oik-plugin
 7. WooCommerce > System Status > Tools > Shipping debug mode
 
 == Upgrade Notice ==
+= 0.0.1 = 
+Checks for WooCommerce 2.6 or higher
 
 = 0.0.0 = 
 Based on oik-weightcountry-shipping.
@@ -105,6 +107,13 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.0.1 = 
+* Changed: Move shipping rates before tax status [github bobbingwide oik-weight-zone-shipping issue 1]
+* Changed: Share OIK_Weight_Shipping class with oik-weight-zone-shipping-pro [github bobbingwide oik-weight-zone-shipping issue 3]
+* Changed: Implement checks for WooCommerce 2.6 or higher [github bobbingwide oik-weight-zone-shipping issue 4]
+* Changed: Update language files [github bobbingwide oik-weight-zone-shipping issue 5]
+* Changed: Updated readme: description, screenshots and captions
+
 = 0.0.0 =
 * Added: New plugin cloned from oik-weightcountry-shipping v1.3.2
 * Changed: Synchronized with code from oik-weight-zone-shipping-pro v0.0.0

@@ -1,10 +1,9 @@
 # Copyright (C) 2016 oik weight zone shipping
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
-msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.0.0\n"
+msgstr """Project-Id-Version: oik weight zone shipping 0.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2016-08-01 12:07:05+00:00\n"
+"POT-Creation-Date: 2016-08-04 13:08:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
@@ -13,90 +12,66 @@ msgstr ""
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-#: class-oik-weight-zone-shipping.php:38
-msgid "Weight Zone"
-msgstr "Weghit Znoe"
-
 #: class-oik-weight-zone-shipping.php:39
-msgid "Lets you charge based on cart weight."
-msgstr "Ltes yOU chrgae based On crat wgieht."
-
+msgid "Weight Zone"
+msgstr ""
 #: class-oik-weight-zone-shipping.php:40
-msgid "Weight and zone based shipping"
-msgstr "Whgeit And znoe baesd shinppig"
-
+msgid "Lets you charge based on cart weight."
+msgstr ""
 #: class-oik-weight-zone-shipping.php:41
+msgid "Weight and zone based shipping"
+msgstr ""
+#: class-oik-weight-zone-shipping.php:42
 msgid "Define rates for shipping by weight and zone"
-msgstr "Denfie retas fOr sihpping by wiehgt And znoe"
-
-#: class-oik-weight-zone-shipping.php:95
+msgstr ""
+#: class-oik-weight-zone-shipping.php:96
 msgid "Method Title"
-msgstr "Meothd Ttile"
-
-#: class-oik-weight-zone-shipping.php:97
+msgstr ""
+#: class-oik-weight-zone-shipping.php:98
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
 msgstr ""
-"ThE tilte wcihh thE user sees dinurg cueokhct, If nOt denefid In Snphipig "
-"Retas."
-
-#: class-oik-weight-zone-shipping.php:98
+#: class-oik-weight-zone-shipping.php:99
 msgid "Weight zone shipping"
-msgstr "Wghiet znoe sinhppig"
-
-#: class-oik-weight-zone-shipping.php:103
+msgstr ""
+#: class-oik-weight-zone-shipping.php:104
 msgid "Shipping Rates"
-msgstr "Snhpipig Rteas"
-
-#: class-oik-weight-zone-shipping.php:105
+msgstr ""
+#: class-oik-weight-zone-shipping.php:106
 msgid ""
 "Set your weight based rates in %1$s for this shipping zone (one per line)."
 "<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|"
 "Standard rate <br />For decimal, use a dot not a comma."
 msgstr ""
-"SEt yuor wgheit based reats In %1$s fOr this sipihpng znoe (OnE pEr lnie)."
-"<br /> Framot: MAx wgihet|Csot|Mthoed Tltie override<br />Example: 10|6.95|"
-"Saratdnd rtae <br />For dacmiel, UsE A dOt nOt A cmoma."
-
-#: class-oik-weight-zone-shipping.php:111
+#: class-oik-weight-zone-shipping.php:112
 msgid "Tax Status"
-msgstr "TAx Sattus"
-
-#: class-oik-weight-zone-shipping.php:117
-msgid "Taxable"
-msgstr "Txbaale"
-
+msgstr ""
 #: class-oik-weight-zone-shipping.php:118
+msgid "Taxable"
+msgstr ""
+#: class-oik-weight-zone-shipping.php:119
 msgctxt "Tax status"
 msgid "None"
-msgstr "Nnoe"
-
-#: class-oik-weight-zone-shipping.php:123
+msgstr ""
+#: class-oik-weight-zone-shipping.php:124
 msgid "Handling Fee"
-msgstr "Hniandlg FEE"
-
-#: class-oik-weight-zone-shipping.php:125
+msgstr ""
+#: class-oik-weight-zone-shipping.php:126
 msgid "Fee excluding tax, e.g. 3.50. Leave blank to disable."
-msgstr "FEE elixcundg tAx, E.g. 3.50. Lvaee balnk tO dlsibae."
-
+msgstr ""
 #. Plugin Name of the plugin/theme
 msgid "oik weight zone shipping"
-msgstr "OIk wegiht znoe sihpping"
-
+msgstr ""
 #. Plugin URI of the plugin/theme
 msgid "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
-msgstr "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
-
+msgstr ""
 #. Description of the plugin/theme
 msgid "Weight zone shipping for WooCommerce 2.6"
-msgstr "Wgehit znoe sppiinhg fOr WomcCmoeroe 2.6"
-
+msgstr ""
 #. Author of the plugin/theme
 msgid "bobbingwide"
-msgstr "binbibgwode"
-
+msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://www.oik-plugins.com/author/bobbingwide"
-msgstr "http://www.oik-plugins.com/author/bobbingwide"
-
+msgstr ""
