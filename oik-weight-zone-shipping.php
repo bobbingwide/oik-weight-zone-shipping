@@ -76,13 +76,17 @@ function oik_weight_zone_shipping_woocommerce_init() {
 
 /**
  * Check the WooCommerce version against the minimum required level
+ *
+ * @TODO Decide whether or not to check against a defined constant instead of $version; either 'WC_VERSION' or 'WOOCOMMERCE_VERSION'.
+ * And if so, whether we need to call WC(). 
+ * What if someone has fiddled with the constants?
  * 
  * @param string $minimum_required Minimum required level
  * @return bool true if the minimum level is active
  */
 function oik_weight_zone_shipping_check_woo_version( $minimum_required = "2.6" ) {
 	$woocommerce = WC();
-	$version = $woocommerce->version;
+	$version = $woocommerce->version;	
 	$active = version_compare( $version, $minimum_required, "ge" );
 	return( $active );
 }
