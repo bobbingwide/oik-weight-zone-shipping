@@ -3,8 +3,8 @@
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, commerce, ecommerce, shop
 * Requires at least: 4.5.2
-* Tested up to: 4.6-beta3
-* Stable tag: 0.0.0
+* Tested up to: 4.6-RC1
+* Stable tag: 0.0.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,8 +15,21 @@ Adds shipping zone weight based shipping cost calculations to your WooCommerce s
 If your WooCommerce store needs to calculate shipping charges based on cart weight and delivery region then this plugin is for you.
 
 # Documentation 
-tbc
 
+This plugin replaces the oik-weightcountry-shipping plugin. Designed to work with WooCommerce 2.6 it is integrated with shipping zones.
+
+Each shipping zone can contain multiple shipping methods with rates that apply to all regions in the zone.
+
+# Features 
+
+* Shipping rates based on cart weight and delivery region
+* Unlimited weight ranges
+* Carts with zero weight
+* FREE shipping in selected weight ranges
+* Default rates using the Rest of the World shipping zone
+* Maximum cart weight
+* WooCommerce 2.6 and above
+* Available in English and French
 
 
 ## Installation 
@@ -77,12 +90,16 @@ and [Multi rate weight shipping for WooCommerce 2.6 FAQ's](http://www.oik-plugin
 
 ## Screenshots 
 1. Add Shipping Method for Weight zone shipping
-2. tbc
-x. Weight and Country shipping settings part two
-y. WooCommerce Checkout shipping rate
-z. Enable Shipping Debug Mode when modifying rates
+2. Weight zone shipping - initial display
+3. Weight zone shipping rates
+4. Weight zone settings - modal
+5. Cart totals
+6. Checkout shipping rate
+7. WooCommerce > System Status > Tools > Shipping debug mode
 
 ## Upgrade Notice 
+# 0.0.1 
+Checks for WooCommerce 2.6 or higher
 
 # 0.0.0 
 Based on oik-weightcountry-shipping.
@@ -90,6 +107,13 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.0.1 
+* Changed: Move shipping rates before tax status [github bobbingwide oik-weight-zone-shipping issue 1]
+* Changed: Share OIK_Weight_Shipping class with oik-weight-zone-shipping-pro [github bobbingwide oik-weight-zone-shipping issue 3]
+* Changed: Implement checks for WooCommerce 2.6 or higher [github bobbingwide oik-weight-zone-shipping issue 4]
+* Changed: Update language files [github bobbingwide oik-weight-zone-shipping issue 5]
+* Changed: Updated readme: description, screenshots and captions
+
 # 0.0.0 
 * Added: New plugin cloned from oik-weightcountry-shipping v1.3.2
 * Changed: Synchronized with code from oik-weight-zone-shipping-pro v0.0.0

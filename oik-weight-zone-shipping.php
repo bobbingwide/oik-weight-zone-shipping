@@ -3,7 +3,7 @@
  * Plugin Name: oik weight zone shipping
  * Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
  * Description: Weight zone shipping for WooCommerce 2.6
- * Version: 0.0.0
+ * Version: 0.0.1
  * Author: bobbingwide
  * Author URI: http://www.oik-plugins.com/author/bobbingwide
  * License: GPL2
@@ -24,6 +24,7 @@
     The license for this software can likely be found here:
     http://www.gnu.org/licenses/gpl-2.0.html
 */
+oik_weight_zone_shipping_loaded();
 
 /**
  * Implement 'woocommerce_shipping_methods' filter for oik-weight-zone-shipping
@@ -39,16 +40,56 @@ function oik_weight_zone_woocommerce_shipping_methods( $methods ) {
 /**
  * Implement 'woocommerce_shipping_init' to load l10n versions and then initialise weight zone shipping
  * 
+ * @TODO Confirm that the class checking for WC_Shipping_Method is just belt and braces. 
  */
 function oik_weight_zone_woocommerce_shipping_init() {
 	if ( class_exists( 'WC_Shipping_Method' ) ) {
 		load_plugin_textdomain( "oik-weight-zone-shipping", false, 'oik-weight-zone-shipping/languages' );
-		require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
+		if ( !class_exists( "OIK_Weight_Zone_Shipping" ) ) {
+			require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
+		}
   }
 }
-	
-add_filter( 'woocommerce_shipping_methods', 'oik_weight_zone_woocommerce_shipping_methods' );
-add_action( 'woocommerce_shipping_init', 'oik_weight_zone_woocommerce_shipping_init' );
+
+/**
+ * Function to invoke when loaded
+ *
+ * Only supports WooCommerce 2.6 and higher
+ * We need to check the WooCommerce version
+ * if WooCommerce is active.
+ */
+function oik_weight_zone_shipping_loaded() { 
+	add_action( "woocommerce_init", "oik_weight_zone_shipping_woocommerce_init" );
+}
+
+/** 
+ * Implement "woocommerce_init"
+ *
+ * Only enabl the logic if the minimum required version of WooCommerce is active  
+ */
+function oik_weight_zone_shipping_woocommerce_init() {
+	if ( oik_weight_zone_shipping_check_woo_version() ) {
+		add_filter( 'woocommerce_shipping_methods', 'oik_weight_zone_woocommerce_shipping_methods' );
+		add_action( 'woocommerce_shipping_init', 'oik_weight_zone_woocommerce_shipping_init' );
+	}
+}
+
+/**
+ * Check the WooCommerce version against the minimum required level
+ *
+ * @TODO Decide whether or not to check against a defined constant instead of $version; either 'WC_VERSION' or 'WOOCOMMERCE_VERSION'.
+ * And if so, whether we need to call WC(). 
+ * What if someone has fiddled with the constants?
+ * 
+ * @param string $minimum_required Minimum required level
+ * @return bool true if the minimum level is active
+ */
+function oik_weight_zone_shipping_check_woo_version( $minimum_required = "2.6" ) {
+	$woocommerce = WC();
+	$version = $woocommerce->version;	
+	$active = version_compare( $version, $minimum_required, "ge" );
+	return( $active );
+}
 
 if ( !function_exists( "bw_trace2" ) ) {
   function bw_trace2( $p=null ) { return $p; }
