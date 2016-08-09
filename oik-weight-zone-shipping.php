@@ -8,7 +8,7 @@
  * Author URI: http://www.oik-plugins.com/author/bobbingwide
  * License: GPL2
  * Text Domain: oik-weight-zone-shipping
- * Domain Path: /languages/
+ * Domain Path: /languages
  
     Copyright Bobbing Wide 2014-2016 ( email : herb@bobbingwide.com ) 
 

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.0.0\n"
+"Project-Id-Version: oik weight zone shipping 0.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2016-08-01 12:07:05+00:00\n"
+"POT-Creation-Date: 2016-08-09 14:07:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,65 +12,65 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: class-oik-weight-zone-shipping.php:38
+#: class-oik-weight-zone-shipping.php:39
 msgid "Weight Zone"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:39
+#: class-oik-weight-zone-shipping.php:40
 msgid "Lets you charge based on cart weight."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:40
+#: class-oik-weight-zone-shipping.php:41
 msgid "Weight and zone based shipping"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:41
+#: class-oik-weight-zone-shipping.php:42
 msgid "Define rates for shipping by weight and zone"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:95
+#: class-oik-weight-zone-shipping.php:96
 msgid "Method Title"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:97
+#: class-oik-weight-zone-shipping.php:98
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:98
+#: class-oik-weight-zone-shipping.php:99
 msgid "Weight zone shipping"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:103
+#: class-oik-weight-zone-shipping.php:104
 msgid "Shipping Rates"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:105
+#: class-oik-weight-zone-shipping.php:106
 msgid ""
 "Set your weight based rates in %1$s for this shipping zone (one per line)."
 "<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|"
 "Standard rate <br />For decimal, use a dot not a comma."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:111
+#: class-oik-weight-zone-shipping.php:112
 msgid "Tax Status"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:117
+#: class-oik-weight-zone-shipping.php:118
 msgid "Taxable"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:118
+#: class-oik-weight-zone-shipping.php:119
 msgctxt "Tax status"
 msgid "None"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:123
+#: class-oik-weight-zone-shipping.php:124
 msgid "Handling Fee"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:125
+#: class-oik-weight-zone-shipping.php:126
 msgid "Fee excluding tax, e.g. 3.50. Leave blank to disable."
 msgstr ""
 
