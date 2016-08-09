@@ -109,14 +109,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					'placeholder'	=> 'max weight | cost | Method title override',
 				),
 				'tax_status' => array(
-					'title'       => __( 'Tax Status', 'woocommerce' ),
+					'title'       => __( 'Tax Status', 'oik-weight-zone-shipping' ),
 					'type'        => 'select',
 					'class' 			=> 'wc-enhanced-select',
 					'description' => '',
 					'default'     => 'taxable',
 					'options'     => array(
-						'taxable' 	=> __( 'Taxable', 'woocommerce' ),
-						'none' 		=> _x( 'None', 'Tax status', 'woocommerce' )
+						'taxable' 	=> __( 'Taxable', 'oik-weight-zone-shipping' ),
+						'none' 		=> _x( 'None', 'Tax status', 'oik-weight-zone-shipping' )
 						)
 				),
 				
