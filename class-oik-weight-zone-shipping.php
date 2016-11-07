@@ -170,12 +170,13 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 			 $final_rate += $this->fee;
 			}
 			$rate = array(
-							 'id'        => $this->id,
+							 'id'        => $this->id . "_" .  $this->instance_id, 
 							 'label'     => $this->shippingrate_title,
 							 'cost'      => $final_rate,
 							 'taxes'     => '',
 							 'calc_tax'  => 'per_order'
 							 );
+			//bw_trace2( $rate, "rate" );
 			$this->add_rate( $rate );
 		} else {
 			add_filter( "woocommerce_cart_no_shipping_available_html", array( $this, 'no_shipping_available') );

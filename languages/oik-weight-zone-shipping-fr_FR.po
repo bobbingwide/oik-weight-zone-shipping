@@ -15,44 +15,39 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 #: class-oik-weight-zone-shipping.php:39
 msgid "Weight Zone"
-msgstr "Poids Zone"
+msgstr "Zone de poids"
 
 #: class-oik-weight-zone-shipping.php:40
 msgid "Lets you charge based on cart weight."
-msgstr "Vous permet de charger en fonction de panier poids."
+msgstr "Vous permet de facturer en fonction du poids du panier."
 
 #: class-oik-weight-zone-shipping.php:41
 msgid "Weight and zone based shipping"
-msgstr "Poids et de la zone à base d'expédition"
+msgstr "Livraison basée sur le poids et la zone"
 
 #: class-oik-weight-zone-shipping.php:42
 msgid "Define rates for shipping by weight and zone"
-msgstr "Définir les taux d'expédition en poids et de la zone"
+msgstr "Définir les frais de livraison par poids et par zone"
 
 #: class-oik-weight-zone-shipping.php:96
 msgid "Method Title"
 msgstr "Titre de la méthode"
 
 #: class-oik-weight-zone-shipping.php:98
-msgid ""
-"The title which the user sees during checkout, if not defined in Shipping "
-"Rates."
-msgstr "Le titre que l'utilisateur voit lors de la commande , si non défini dans Frais d'expédition ."
+msgid "The title which the user sees during checkout, if not defined in Shipping Rates."
+msgstr "Le titre que l’utilisateur voit lors de la commande, s’il n'est pas défini dans les frais de livraison."
 
 #: class-oik-weight-zone-shipping.php:99
 msgid "Weight zone shipping"
-msgstr "expédition de la zone de poids"
+msgstr "Weight zone shipping"
 
 #: class-oik-weight-zone-shipping.php:104
 msgid "Shipping Rates"
 msgstr "Frais de livraison"
 
 #: class-oik-weight-zone-shipping.php:106
-msgid ""
-"Set your weight based rates in %1$s for this shipping zone (one per line)."
-"<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|"
-"Standard rate <br />For decimal, use a dot not a comma."
-msgstr "Définissez vos tarifs en fonction du poids en %1$s pour cette zone d'expédition (un par ligne). <br />Format : Poids | Coût | Méthode Titre override<br />"
+msgid "Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|Standard rate <br />For decimal, use a dot not a comma."
+msgstr "Définissez vos tarifs en fonction du poids en %1$s pour cette zone de livraison (un par ligne). <br />Format : Poids Max | Coût | Titre de méthode<br />Exemple: 10|6.95|A domicile <br />Pour les décimales,  utilisez un point, pas une virgule."
 
 #: class-oik-weight-zone-shipping.php:112
 msgid "Tax Status"
@@ -65,7 +60,7 @@ msgstr "Taxable"
 #: class-oik-weight-zone-shipping.php:119
 msgctxt "Tax status"
 msgid "None"
-msgstr "Aucun"
+msgstr "Aucune"
 
 #: class-oik-weight-zone-shipping.php:124
 msgid "Handling Fee"
@@ -73,7 +68,7 @@ msgstr "Frais de traitement"
 
 #: class-oik-weight-zone-shipping.php:126
 msgid "Fee excluding tax, e.g. 3.50. Leave blank to disable."
-msgstr "Frais excluant la TVA, par exemple 3.5. Laisser vide pour ignorer."
+msgstr "Frais excluant la TVA, par exemple 3.50. Laissez vide pour ignorer."
 
 #. Plugin Name of the plugin/theme
 msgid "oik weight zone shipping"
@@ -85,7 +80,7 @@ msgstr "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
 
 #. Description of the plugin/theme
 msgid "Weight zone shipping for WooCommerce 2.6"
-msgstr "Poids d'expédition de zone pour WooCommerce 2.6"
+msgstr "Weight zone shipping pour WooCommerce 2.6"
 
 #. Author of the plugin/theme
 msgid "bobbingwide"
