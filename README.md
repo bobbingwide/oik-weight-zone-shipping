@@ -1,10 +1,11 @@
 # Weight zone shipping for WooCommerce 2.6 
+![banner](https://raw.githubusercontent.com/bobbingwide/oik-weight-zone-shipping/master/assets/oik-weight-zone-shipping-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, commerce, ecommerce, shop
 * Requires at least: 4.5.2
-* Tested up to: 4.6-RC1
-* Stable tag: 0.0.1
+* Tested up to: 4.6.1
+* Stable tag: 0.0.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,7 +71,7 @@ Set the default Method Title and add overrides in the Shipping Rates table
 
 # Does this support multiple rates per weight/shipping zone combination? 
 
-Yes.
+Yes - from version 0.0.2
 
 Because this plugin is integrated with WooCommerce Shipping Zones you can achieve it by
 creating multiple shipping methods using Weight zone shipping.
@@ -85,8 +86,9 @@ which is the premium version of the plugin.
 
 # Are there any other FAQs? 
 
-Yes. See [oik weight zone shipping for WooCommerce 2.6 FAQS](http://www.oik-plugins.com/wordpress-plugins-from-oik-plugins/oik-weight-zone-shipping-faqs)
+Yes. See [oik weight zone shipping for WooCommerce 2.6 FAQS](http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping/?oik-tab=faq)
 and [Multi rate weight shipping for WooCommerce 2.6 FAQ's](http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping-pro/?oik-tab=faq)
+
 
 ## Screenshots 
 1. Add Shipping Method for Weight zone shipping
@@ -98,6 +100,9 @@ and [Multi rate weight shipping for WooCommerce 2.6 FAQ's](http://www.oik-plugin
 7. WooCommerce > System Status > Tools > Shipping debug mode
 
 ## Upgrade Notice 
+# 0.0.2 
+Contains a fix so that multiple weight zone shipping methods can be implemented.
+
 # 0.0.1 
 Checks for WooCommerce 2.6 or higher
 
@@ -107,11 +112,16 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.0.2 
+* Fixed: Support multiple rates using multiple methods [Issue 6](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/6)
+* Tested: With WordPress 4.6.1 and WooCommerce 2.6.7
+* Updated: readme links
+
 # 0.0.1 
-* Changed: Move shipping rates before tax status [github bobbingwide oik-weight-zone-shipping issue 1]
-* Changed: Share OIK_Weight_Shipping class with oik-weight-zone-shipping-pro [github bobbingwide oik-weight-zone-shipping issue 3]
-* Changed: Implement checks for WooCommerce 2.6 or higher [github bobbingwide oik-weight-zone-shipping issue 4]
-* Changed: Update language files [github bobbingwide oik-weight-zone-shipping issue 5]
+* Changed: Move shipping rates before tax status [Issue 1](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/1)
+* Changed: Share OIK_Weight_Shipping class with oik-weight-zone-shipping-pro [Issue 3](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/3)
+* Changed: Implement checks for WooCommerce 2.6 or higher [Issue 4](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/4)
+* Changed: Update language files [Issue 5](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/5)
 * Changed: Updated readme: description, screenshots and captions
 
 # 0.0.0 
