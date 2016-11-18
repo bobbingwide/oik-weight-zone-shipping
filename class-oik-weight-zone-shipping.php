@@ -131,16 +131,6 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	}
 	
 	/**
-	 * Return the instance form fields
-	 *
-	 * @return array of instance form fields
-	 */
-	function get_instance_form_fields() {
-		$this->init_form_fields();
-		return( $this->instance_form_fields );
-	}
-	
-	/**
 	 * Return if the method is available
 	 */
 	
