@@ -1,0 +1,103 @@
+# Copyright (C) 2016 oik weight zone shipping
+# This file is distributed under the same license as the oik weight zone shipping package.
+msgid ""
+msgstr ""
+"Project-Id-Version: oik weight zone shipping 0.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
+"POT-Creation-Date: 2017-01-09 19:42+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-01-15 13:30+0100\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: Johan Yourstone <johan.yourstone@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv_SE\n"
+
+#: class-oik-weight-zone-shipping.php:39
+msgid "Weight Zone"
+msgstr "Vikt Zon"
+
+#: class-oik-weight-zone-shipping.php:40
+msgid "Lets you charge based on cart weight."
+msgstr "Låter dig ange fraktpris baserat på varukorgens vikt"
+
+#: class-oik-weight-zone-shipping.php:41
+msgid "Weight and zone based shipping"
+msgstr "Vikt- och zonbaserad frakt"
+
+#: class-oik-weight-zone-shipping.php:42
+msgid "Define rates for shipping by weight and zone"
+msgstr "Definiera fraktpriser baserat på vikter och zoner"
+
+#: class-oik-weight-zone-shipping.php:96
+msgid "Method Title"
+msgstr "Titel för fraktsätt"
+
+#: class-oik-weight-zone-shipping.php:98
+msgid ""
+"The title which the user sees during checkout, if not defined in Shipping "
+"Rates."
+msgstr ""
+"Titeln som användaren ser i kassan, om inte definierad i fraktpriser."
+
+#: class-oik-weight-zone-shipping.php:99
+msgid "Weight zone shipping"
+msgstr "Vikt- & zonfrakt"
+
+#: class-oik-weight-zone-shipping.php:104
+msgid "Shipping Rates"
+msgstr "Fraktpriser"
+
+#: class-oik-weight-zone-shipping.php:106
+msgid ""
+"Set your weight based rates in %1$s for this shipping zone (one per line)."
+"<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|"
+"Standard rate <br />For decimal, use a dot not a comma."
+msgstr ""
+"Ange dina viktbaserade priser i %1$s för denna fraktzon (en per rad)."
+"<br>Format: Max vikt | Kostnad | Åsidosättning av titel för "
+"metod<br>Exempel: 10 | 6.95 | Standardpris<br>För decimal, använd en "
+"punkt, inte ett kommatecken."
+
+#: class-oik-weight-zone-shipping.php:112
+msgid "Tax Status"
+msgstr "Momsstatus"
+
+#: class-oik-weight-zone-shipping.php:118
+msgid "Taxable"
+msgstr "Momsbelagd"
+
+#: class-oik-weight-zone-shipping.php:119
+msgctxt "Tax status"
+msgid "None"
+msgstr "Ingen"
+
+#: class-oik-weight-zone-shipping.php:124
+msgid "Handling Fee"
+msgstr "Hanteringsavgift"
+
+#: class-oik-weight-zone-shipping.php:126
+msgid "Fee excluding tax, e.g. 3.50. Leave blank to disable."
+msgstr "Avgift exklusive moms, t.ex. 3.50. Lämna tomt för att inaktivera."
+
+#. Plugin Name of the plugin/theme
+msgid "oik weight zone shipping"
+msgstr "oik vikt- & zonfrakt"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
+msgstr "http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
+
+#. Description of the plugin/theme
+msgid "Weight zone shipping for WooCommerce 2.6"
+msgstr "Vikt- & zonfrakt för WooCommerce 2.6"
+
+#. Author of the plugin/theme
+msgid "bobbingwide"
+msgstr "bobbingwide"
+
+#. Author URI of the plugin/theme
+msgid "http://www.oik-plugins.com/author/bobbingwide"
+msgstr "http://www.oik-plugins.com/author/bobbingwide"
