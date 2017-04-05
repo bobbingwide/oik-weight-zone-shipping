@@ -30,7 +30,7 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 * Default rates using the Rest of the World shipping zone
 * Maximum cart weight
 * WooCommerce 2.6, 3.0 and above
-* Available in English and French
+* Available in English, French and Swedish
 
 
 ## Frequently Asked Questions 
