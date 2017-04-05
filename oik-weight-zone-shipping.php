@@ -1,16 +1,16 @@
 <?php
 /**
  * Plugin Name: oik weight zone shipping
- * Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
- * Description: Weight zone shipping for WooCommerce 2.6
- * Version: 0.0.2
+ * Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
+ * Description: Weight zone shipping for WooCommerce
+ * Version: 0.0.3
  * Author: bobbingwide
- * Author URI: http://www.oik-plugins.com/author/bobbingwide
+ * Author URI: https://www.oik-plugins.com/author/bobbingwide
  * License: GPL2
  * Text Domain: oik-weight-zone-shipping
  * Domain Path: /languages
  
-    Copyright Bobbing Wide 2014-2016 ( email : herb@bobbingwide.com ) 
+    Copyright Bobbing Wide 2014-2017 ( email : herb@bobbingwide.com ) 
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -77,9 +77,7 @@ function oik_weight_zone_shipping_woocommerce_init() {
 /**
  * Check the WooCommerce version against the minimum required level
  *
- * @TODO Decide whether or not to check against a defined constant instead of $version; either 'WC_VERSION' or 'WOOCOMMERCE_VERSION'.
- * And if so, whether we need to call WC(). 
- * What if someone has fiddled with the constants?
+ * Note: The code has been tested against WooCommerce 2.6 and 3.0
  * 
  * @param string $minimum_required Minimum required level
  * @return bool true if the minimum level is active
