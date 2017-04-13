@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015,2016
+<?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
  * Single rate weight zone shipping class WooCommerce Extension
@@ -16,6 +16,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *
 	 */
 	public $shippingrate_title;
+	
+	private $allowed_delimiters = array( "|", "/", "," );
+	private $dot_rate_delimiters = array( "|", "/", "," );
+	private $decimal_separator;
+	private $thousand_separator; 
   
 	/**
 	 * Constructor for OIK_Weight_Zone_Shipping class
@@ -103,7 +108,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 				'options'       => array(
 					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
 					'type'        => 'textarea',
-					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|Standard rate <br />For decimal, use a dot not a comma.', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ) ),
+					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight|Cost|Method Title override<br />Example: 10|6.95|Standard rate', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ) ),
 					'default'     => '',
 					'desc_tip'    => false,
 					'placeholder'	=> 'max weight | cost | Method title override',
@@ -172,6 +177,146 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 			add_filter( "woocommerce_cart_no_shipping_available_html", array( $this, 'no_shipping_available') );
 		}
 	}
+	
+	/**
+	 * Gets the rate field from the option line using user defined delimiters
+	 *
+	 * @param string $value
+	 * @param array $allowed_delimiters for the field separator
+	 * @return array rate 0=> max weight 1=> rate 2=> label
+	 */
+	function get_local_rate( $value, $allowed_delimiters ) {
+		$value = trim( $value );
+		$value = str_replace( $allowed_delimiters, "|", $value );
+		$rate = explode( "|", $value );
+		foreach ( $rate as $key => $val ) {
+			$rate[$key] = trim( $val );
+		}
+		if ( !isset( $rate[0] ) ) {
+			$rate[0] = null;
+		}	else {
+			$rate[0] = $this->get_value_as_decimal( $rate[0] );
+		}
+		if ( !isset( $rate[1] ) ) {
+			$rate[1] = null;
+		}	else {
+			$rate[1] = $this->get_value_as_decimal( $rate[1] );
+		}
+		if ( !isset( $rate[2] ) ) {
+			$rate[2] = null;
+		}
+		return $rate;
+	}
+	
+	
+	/**
+	 * 
+	 */
+	function get_value_as_decimal( $value ) {
+		$value = str_replace( $this->decimal_separator, ".", $value );
+		return $value;
+	}
+	
+	/**
+	 * Get the useable rate
+	 * 
+	 */
+	function get_rate( $value ) {
+		$local_rate = $this->get_local_rate( $value, $this->allowed_delimiters );
+		
+		bw_trace2( $local_rate, "local rate array", true );
+		$dot_rate = $this->get_local_rate( $value, $this->dot_rate_delimiters );
+		
+		bw_trace2( $dot_rate, "dot rate array", true );
+		$useable_rate = $this->reconcile_rates( $local_rate, $dot_rate );
+		return $useable_rate;
+	}
+	
+	/**
+	 * Reconcile the rates obtained
+	 *
+	 * property | local_rate | dot_rate | use?
+	 * -------- | ---------- | -------- | -----
+	 * count()  | 3          | 3        | either
+	 * count()  | <>3        | 3        | dot_rate
+	 * count()  | 3          | <>3      | 
+	 * 
+	 * 
+	 */
+	function reconcile_rates( $local_rate, $dot_rate ) {
+		$useable_rate = null;
+		$local_count = count( $local_rate );
+		$dot_count = count( $dot_rate );
+		$local_dot = (  $local_count * 10 ) + $dot_count;
+		switch ( $local_dot ) {
+			case 33:
+				$useable_rate = $dot_rate;
+				if ( $dot_rate !== $local_rate ) {
+					$this->mismatch( $local_rate, $dot_rate );
+				}
+				
+				break;
+			
+			case 13:
+			case 23:
+			case 43:
+				$useable_rate = $dot_rate; 
+				break; 
+				
+			case 31:
+			case 32:
+			case 34:
+			case 35:
+				$useable_rate = $local_rate;
+				break;
+		}
+		return( $useable_rate );
+	}
+	
+	
+	/** 
+	 * Sets the allowed field delimiters
+	 * 
+	 * We remove any delimiters that are defined as WooCommerce currency separators
+	 * 
+	 * Notes: 
+	 * - Default separator for decimal is a dot aka period '.'
+	 * - Default separator for thousands is ','
+	 * - WooCommerce allows the separators to be the same value. We don't.
+	 * - Separators can also be blank, or null.
+	 * - We don't allow '|' to be used as a currency separator.
+	 * - Do we really expect rates to be in the thousands?
+	 * - We'll allow the weight to be entered using the same rules as currency
+	 */
+	function set_allowed_delimiters( ) {
+		//$this->allowed_delimiters = array( "/", "," );
+		$this->decimal_separator = wc_get_price_decimal_separator();
+		$this->thousand_separator = wc_get_price_thousand_separator();
+		$acceptable = $this->acceptable_separators();
+		
+		$allowed_delimiters = array_diff( $this->allowed_delimiters, array( $this->decimal_separator, $this->thousand_separator ) );
+		bw_trace2( $allowed_delimiters, "allowed delimiters" );
+		$this->allowed_delimiters = $allowed_delimiters;
+		return $acceptable;
+	}
+	
+	function acceptable_separators() {
+		$acceptable = true;
+		if ( $this->decimal_separator == $this->thousand_separator ) {
+			// wc_error( 
+			$acceptable = false;
+			bw_trace2( $this->decimal_separator, "Decimal and thousand separators should not be the same", false ); 
+		}
+		if ( $this->decimal_separator == '|' ) {
+			$acceptable = false;
+			bw_trace2( $this->decimal_separator, "Non-acceptable value for decimal separator", false );
+		}
+		if ( $this->thousand_separator == '|' ) {
+			$acceptable = false;
+			bw_trace2( $this->thousand_separator, "Non-acceptable value for thousand separator", false );
+		}
+		return $acceptable;
+	}
 
 	/**
 	 * Retrieves all rates available
@@ -182,30 +327,26 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @return array $rates -
 	 */
 	function get_rates() {
-		bw_trace2();
+		bw_trace2();  			
 		$rates = array();
-		$options = $this->get_option( "options" );
-		bw_trace2( $options, "options", false );
-		$options = trim( $options );
-		if ( $options ) {
-			$options = (array) explode( "\n", $options );
-			bw_trace2( $options, "options array", false );
-			if ( sizeof( $options ) > 0) {
-				foreach ( $options as $option => $value ) {
-					$value = trim( $value );
-					$value = str_replace( array( "/", "," ), "|", $value );
-					$rate = explode( "|", $value );
-					foreach ( $rate as $key => $val ) {
-						$rate[$key] = trim( $val );
+		if ( $this->set_allowed_delimiters() ) {
+			$options = $this->get_option( "options" );
+			bw_trace2( $options, "options", false );
+			$options = trim( $options );
+			if ( $options ) {
+				$options = (array) explode( "\n", $options );
+				bw_trace2( $options, "options array", false );
+				if ( sizeof( $options ) > 0) {
+					foreach ( $options as $option => $value ) {
+						$rate = $this->get_rate( $value );
+						$this->set_shippingrate_title( $rate );
+						$rates[] = $rate;
 					}
-					if ( !isset( $rate[2] ) ) {
-						$rate[2] = null;
-					}
-					$this->set_shippingrate_title( $rate );
-					$rates[] = $rate;
 				}
 			}
-		}	  
+		}	else {
+			$rates[] = array( "Invalid currency separators", "Please change", "" );
+		}		
 		return( $rates );
 	}
     
