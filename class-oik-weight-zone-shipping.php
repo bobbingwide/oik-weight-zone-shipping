@@ -237,52 +237,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$dot_rate = $this->get_local_rate( $value, $this->delimiters );
 		
 		bw_trace2( $dot_rate, "dot rate array", true );
-		//$useable_rate = $this->reconcile_rates( $local_rate, $dot_rate );
 		return $dot_rate;
 	}
-	
-	/**
-	 * Reconcile the rates obtained
-	 *
-	 * property | local_rate | dot_rate | use?
-	 * -------- | ---------- | -------- | -----
-	 * count()  | 3          | 3        | either
-	 * count()  | <>3        | 3        | dot_rate
-	 * count()  | 3          | <>3      | 
-	 * 
-	 * 
-	 */
-	function reconcile_rates( $local_rate, $dot_rate ) {
-		$useable_rate = null;
-		$local_count = count( $local_rate );
-		$dot_count = count( $dot_rate );
-		$local_dot = (  $local_count * 10 ) + $dot_count;
-		switch ( $local_dot ) {
-			case 33:
-				$useable_rate = $dot_rate;
-				if ( $dot_rate !== $local_rate ) {
-					$this->mismatch( $local_rate, $dot_rate );
-				}
-				
-				break;
-			
-			case 13:
-			case 23:
-			case 43:
-				$useable_rate = $dot_rate; 
-				break; 
-				
-			case 31:
-			case 32:
-			case 34:
-			case 35:
-				$useable_rate = $local_rate;
-				break;
-		}
-		return( $useable_rate );
-	}
-	
-	
 	/** 
 	 * Sets the allowed field delimiters
 	 * 
