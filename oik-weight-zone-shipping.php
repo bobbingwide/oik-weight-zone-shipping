@@ -65,7 +65,7 @@ function oik_weight_zone_shipping_loaded() {
 /** 
  * Implement "woocommerce_init"
  *
- * Only enabl the logic if the minimum required version of WooCommerce is active  
+ * Only enable the logic if the minimum required version of WooCommerce is active  
  */
 function oik_weight_zone_shipping_woocommerce_init() {
 	if ( oik_weight_zone_shipping_check_woo_version() ) {
