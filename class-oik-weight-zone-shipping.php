@@ -219,7 +219,9 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * The number may have been entered using the thousand and decimal separators currently specified.
 	 * OR the user could simply have used '.'s
 	 * 
-	 * We want to convert the incoming number to a simple decimal value.
+	 * - We want to convert the incoming number to a simple decimal value.
+	 * - We assume that the separator character are sensible.
+	 * - We don't care how many decimal places are used on input
 	 * 
 	 * e.g.
 	 * Thous | Dec  | Value     | Return
@@ -278,6 +280,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		return $acceptable;
 	}
 	
+	/**
+	 * Tests separators are acceptable
+	 *
+	 * WooCommerce 3.0 doesn't perform any sanity checking on the separators
+	 * This could lead to all kinds of problems.
+	 * 
+	 * @return bool - true if we think they're acceptable.
+	 */
 	function acceptable_separators() {
 		$acceptable = true;
 		if ( $this->decimal_separator == $this->thousand_separator ) {
@@ -355,6 +365,12 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->instance_settings['options'] = $options;
 	}
 	
+	/**
+	 * Converts rates to options
+	 *
+	 * @param array $rates
+	 */
+	
 	function rates_to_options( $rates ) {
 		bw_trace2();
 		$rates = $this->get_rates_table( $rates );
@@ -367,14 +383,44 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	
 	}
 	
+	/**
+	 * Converts a rate array to an option string
+	 * 
+	 * 
+	 * 
+	 * @param array $rate 
+	 * @return string option string
+	 */
+	
 	function convert_rate_to_option( $rate ) {
 		$option = array();
-		$option[] = array_shift( $rate );
+		$option[] = $this->local_number( array_shift( $rate ) );
 		$option[] = $this->price( array_shift( $rate ) );
 		$option[] = implode( " ", $rate );
 		$option = implode( " | ", $option );
 		return( $option );
 	}
+	
+	/**
+	 * Display a localized number
+	 * 
+	 * Used to Format the Max weight where the number of decimals is not limited.
+	 *
+	 * https://en.wikipedia.org/wiki/Decimal_mark
+	 */
+	
+	function local_number( $value ) {
+		if ( is_numeric( $value ) ) { 
+			//$local_number = number_format( $value, 10 , $this->decimal_separator, $this->thousand_separator );
+			//$local_number = rtrim( $local_number, "0" );
+			//$local_number = rtrim( $local_number, "." );
+			$local_number = wc_format_localized_decimal( $value );
+		} else {
+			$local_number = $value;
+		}
+		bw_trace2( $local_number, "local_number" );
+		return( $local_number );
+	} 
 	
 	/**
 	 *
