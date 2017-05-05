@@ -108,4 +108,16 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 		$this->assertEquals( $expected, $actual );
 	}
 	
+	/**
+	 * Note: PHP's number_format function ignores the 
+	 * "common convention for formatting thousands after the decimal point
+	 */
+	
+	function test_number_format() {
+	
+		$result = number_format( 123456.7890123, 8, ".", "," );
+		//$this->assertEquals( "123,456.789,012,3", $result );
+		$this->assertEquals( "123,456.78901230", $result );
+	
+	} 
 }
