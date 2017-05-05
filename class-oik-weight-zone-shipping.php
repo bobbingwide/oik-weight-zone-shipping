@@ -214,9 +214,26 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	
 	
 	/**
+	 * Returns a decimal price value
 	 * 
+	 * The number may have been entered using the thousand and decimal separators currently specified.
+	 * OR the user could simply have used '.'s
+	 * 
+	 * We want to convert the incoming number to a simple decimal value.
+	 * 
+	 * e.g.
+	 * Thous | Dec  | Value     | Return
+	 * ----- | ---  | --------- | -------
+	 * ,     | .    | 1,234.56  | 1234.56
+	 * .     | ,    | 1.234,56  | 1234.56
+	 * blank | ,    | 1 234,56  | 1234.56
+	 * xy    | z    | 1xy234z56 | 1234.56 
+	 *  
+	 * @param string $value
+	 * @return string decimal value
 	 */
 	function get_value_as_decimal( $value ) {
+		$value = str_replace( $this->thousand_separator, "", $value );
 		$value = str_replace( $this->decimal_separator, ".", $value );
 		return $value;
 	}
@@ -241,7 +258,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * 
 	 * Notes: 
 	 * - Default separator for decimal is a dot aka period '.'
-	 * - Default separator for thousands is ','
+	 * - Default separator for thousand is ','
 	 * - WooCommerce allows the separators to be the same value. We don't.
 	 * - Separators can also be blank, or null.
 	 * - We don't allow '|' to be used as a currency separator.
