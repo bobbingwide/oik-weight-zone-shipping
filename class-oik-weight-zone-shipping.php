@@ -42,6 +42,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	function __construct( $instance_id = 0 ) {
 		parent::__construct( $instance_id );
 		bw_trace2( );
+		//bw_backtrace();
 		$this->supports = array( "shipping-zones", "instance-settings", "instance-settings-modal" );
 		$this->id = 'oik_weight_zone_shipping'; 
 		$this->method_title = __( 'Weight Zone', 'oik-weight-zone-shipping' );
@@ -66,33 +67,26 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->init_form_fields();
 		$this->init_settings();
 		$this->init_instance_settings();
-		bw_trace2( $this->instance_settings, "instance_settings" );
+		//bw_trace2( $this->instance_settings, "instance_settings" );
 		$this->convert_rates_to_options();
 
 		$this->enabled          = $this->get_option('enabled');
-		//$this->title            = $this->get_option('title');
-		//$this->availability     = 'specific';
 		
-		//$this->country_group_no	= $this->get_option('country_group_no');
-		//$this->countries 	    = $this->get_option('countries');
 		$this->type             = 'order';
 		$this->tax_status       = $this->get_option('tax_status');
 		$this->fee              = $this->get_option('fee');
 		
-		// We now deal with instance_options using $this->get_option( "options" );
-		//  
-		//$this->options			= isset( $this->settings['options'] ) ? $this->settings['options'] : '';
-		//$this->options			= (array) explode( "\n", $this->options );
+		bw_trace2( $this->fee, "this->fee" );
+		$this->instance_settings['fee'] = $this->price( $this->fee );
+		
 		
 		// @TODO What do we do with regards to availability
+		//$this->availability     = 'specific';
 		//if ( empty( $this->countries ) ) {
 		//	$this->availability = $this->settings['availability'] = 'all';
 		//}
 		
-		$this->title                = $this->get_option( 'title' );
-		//$this->tax_status           = $this->get_option( 'tax_status' );
-		//$this->cost                 = $this->get_option( 'cost' );
-		//$this->type                 = $this->get_option( 'type', 'class' );
+		$this->title              = $this->get_option( 'title' );
 		$this->shippingrate_title = $this->title;
 	}
 	
@@ -105,6 +99,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */ 
 	function init_form_fields() {
 		$six_ninety_five = $this->price( 6.95 ); 
+		$three_fifty = $this->price( 3.50 );
 		$this->instance_form_fields = array(
 				'title'      => array(
 					'title'       => __( 'Method Title', 'oik-weight-zone-shipping' ),
@@ -137,7 +132,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 				'fee'        => array(
 					'title'       => __( 'Handling Fee', 'oik-weight-zone-shipping' ),
 					'type'        => 'text',
-					'description' => __( 'Fee excluding tax, e.g. 3.50. Leave blank to disable.', 'oik-weight-zone-shipping' ),
+					'description' => sprintf( __( 'Fee excluding tax, e.g. %1$s. Leave blank to disable.', 'oik-weight-zone-shipping' ), $three_fifty ),
 					'default'     => '',
 					'desc_tip'		=> true,
 				),
@@ -319,7 +314,22 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	}
 	
 	/**
+	 * Validate the fee to be a valid currency value
+	 *
+	 * Allow for local currency separators
+	 *
+	 */ 
+	function validate_fee_field( $key, $value ) {
+		$value = $this->get_value_as_decimal( $value );
+		bw_trace2();
+		return $value;
+	}
+	
+	/**
 	 * Convert a rates array to an options string
+	 * 
+	 * Rates are stored internally as separate fields.
+	 * On the front end it's a simple text field.
 	 *
 	 */
 	function convert_rates_to_options() {
@@ -424,8 +434,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function set_shippingrate_title( $rate ) {
 		bw_trace2();
-		bw_backtrace();
-		//bw_trace2();
+		//bw_backtrace();
 		if ( isset( $rate[2] ) && $rate[2] != "" ) {
 			$title = $rate[2];
 		} else {
