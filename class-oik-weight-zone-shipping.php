@@ -68,7 +68,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->init_settings();
 		$this->init_instance_settings();
 		//bw_trace2( $this->instance_settings, "instance_settings" );
-		$this->convert_rates_to_options();
+		$this->convert_rates_to_display();
 
 		$this->enabled          = $this->get_option('enabled');
 		
@@ -109,7 +109,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					'desc_tip'    => true,
 
 				),
-				'options'       => array(
+				'rates'       => array(
 					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
 					'type'        => 'textarea',
 					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | %2$s | Standard rate', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ), $six_ninety_five ),
@@ -183,11 +183,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	}
 	
 	/**
-	 * Gets the rate field from the option line using user defined delimiters
+	 * Gets the rate array field from a rates display line using user defined delimiters
 	 *
 	 * @param string $value
 	 * @param array $allowed_delimiters for the field separator
-	 * @return array rate 0=> max weight 1=> rate 2=> label
+	 * @return array rate; 0=> max weight, 1=> rate, 2=> label
 	 */
 	function get_local_rate( $value, $allowed_delimiters ) {
 		$value = trim( $value );
@@ -211,7 +211,6 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		}
 		return $rate;
 	}
-	
 	
 	/**
 	 * Returns a decimal price value
@@ -242,16 +241,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	
 	/**
 	 * Get the useable rate
-	 * 
+	 *
+	 * @param string $value
+	 * @return array $rate_array 
 	 */
 	function get_rate( $value ) {
-		//$local_rate = $this->get_local_rate( $value, $this->allowed_delimiters );
-		
-		//bw_trace2( $local_rate, "local rate array", true );
-		$dot_rate = $this->get_local_rate( $value, $this->delimiters );
-		
-		bw_trace2( $dot_rate, "dot rate array", true );
-		return $dot_rate;
+		$rate_array = $this->get_local_rate( $value, $this->delimiters );
+		bw_trace2( $rate_array, "rate array", true );
+		return $rate_array;
 	}
 	/** 
 	 * Sets the allowed field delimiters
@@ -312,11 +309,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * If it's not an array then we treat it as an unconverted options string.
 	 * @TODO What if it's not set?
 	 * 
-	 *
+	 * @return array internal representation of the rates table
 	 */
 	function get_rates() {
-		//$rates = $this->get_option( "options" );
-		$rates = $this->instance_settings['rates'];
+		$rates = $this->instance_settings['rates_table'];
 		bw_trace2( $rates, "rates", false );
 		if ( !$rates || !is_array( $rates) ) {
 			$this->delimiters = $this->dot_rate_delimiters;
@@ -327,13 +323,13 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	
 	
 	/**
-	 * Validates the options field converting it to a rates array
+	 * Validates the rates field converting it to a rates array
 	 *
 	 * @param string $key
 	 * @param string $value
 	 * @return 
 	 */
-	function validate_options_field( $key, $value ) {
+	function validate_rates_field( $key, $value ) {
 		bw_trace2();
 		$this->delimiters = $this->allowed_delimiters;
 		$value = $this->get_rates_table( $value ); 
@@ -353,33 +349,36 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	}
 	
 	/**
-	 * Convert a rates array to an options string
+	 * Convert a rates table array to a rates display string
 	 * 
 	 * Rates are stored internally as separate fields.
-	 * On the front end it's a simple text field.
+	 * On the front end it's a simple textarea field.
 	 *
 	 */
-	function convert_rates_to_options() {
-		$this->instance_settings['rates'] = $this->instance_settings['options'];
-		$options = $this->rates_to_options( $this->instance_settings['rates'] );
-		$this->instance_settings['options'] = $options;
+	function convert_rates_to_display() {
+		if ( !isset( $this->instance_settings['rates'] ) ) {
+			$this->instance_settings['rates'] = null;
+		}
+		$this->instance_settings['rates_table'] = $this->instance_settings['rates'];
+		$rates_display = $this->rates_array_to_display( $this->instance_settings['rates'] );
+		$this->instance_settings['rates'] = $rates_display;
 	}
 	
 	/**
-	 * Converts rates to options
+	 * Converts rates table to rates display
 	 *
 	 * @param array $rates
 	 */
 	
-	function rates_to_options( $rates ) {
+	function rates_array_to_display( $rates ) {
 		bw_trace2();
 		$rates = $this->get_rates_table( $rates );
-		$options = array();
+		$rates_display = array();
 		foreach ( $rates as $key => $rate ) {
-			$options[] = $this->convert_rate_to_option( $rate );
+			$rates_display[] = $this->convert_rate_array_to_rate_display( $rate );
 		}
-		$options = implode( "\n", $options );
-		return $options;
+		$rates_display = implode( "\n", $rates_display );
+		return $rates_display;
 	
 	}
 	
@@ -389,16 +388,16 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * 
 	 * 
 	 * @param array $rate 
-	 * @return string option string
+	 * @return string $rate_display
 	 */
 	
-	function convert_rate_to_option( $rate ) {
-		$option = array();
-		$option[] = $this->local_number( array_shift( $rate ) );
-		$option[] = $this->price( array_shift( $rate ) );
-		$option[] = implode( " ", $rate );
-		$option = implode( " | ", $option );
-		return( $option );
+	function convert_rate_array_to_rate_display( $rate ) {
+		$rate_display = array();
+		$rate_display[] = $this->local_number( array_shift( $rate ) );
+		$rate_display[] = $this->price( array_shift( $rate ) );
+		$rate_display[] = implode( " ", $rate );
+		$rate_display = implode( " | ", $rate_display );
+		return( $rate_display );
 	}
 	
 	/**
@@ -442,41 +441,46 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	/**
 	 * Retrieves all rates available
 	 *
-	 * Now supports separators of '/' forward slash and ',' comma as well as vertical bar
-	 * Also trims off blanks.
+	 * - If rates have not yet been converted then we load the values from "options"
+	 * - Supports user defined currency separators 
+	 * - Supports field separators of forward slash, vertical bar and comma; if not used as a currency separator
+	 * - Also trims off blanks.
 	 *
 	 * @param string $value
-	 * @return array $rates -
+	 * @return array $rates_table
 	 */
 	function get_rates_table( $value=null ) {
 		if ( $value ) {
-			$options = $value;
+			$rates = $value;
 		} else {
-			$options = $this->get_option( "options" );
+			$rates = $this->get_option( "options" );
 		}
-		bw_trace2( $options, "options" ); 
-		if ( !is_array( $options ) ) { 			
-			$rates = $this->options_to_rates( $options );
+		bw_trace2( $rates, "rates" ); 
+		if ( !is_array( $rates ) ) { 			
+			$rates_table = $this->convert_rates_display_to_rates_table( $rates );
 		} else {
-			$rates = $options;
+			$rates_table = $rates;
 		}
-		return $rates;
+		return $rates_table;
 	}
 	
 	/**
-	 * Convert options to rates
+	 * Convert rates display to rates table
+	 * 
+	 * @param string $rates_display
+	 * @return array $rates - table
 	 */
-	function options_to_rates( $options ) {
+	function convert_rates_display_to_rates_table( $rates_display ) {
 		$rates = array();
 	
-		bw_trace2( $options, "options", false );
-		$options = trim( $options );
+		bw_trace2( $rates_display, "rates display", false );
+		$rates_display = trim( $rates_display );
 			
-		if ( $options ) {
-			$options = (array) explode( "\n", $options );
-			bw_trace2( $options, "options array", false );
-			if ( sizeof( $options ) > 0) {
-				foreach ( $options as $option => $value ) {
+		if ( $rates_display ) {
+			$rates_display = (array) explode( "\n", $rates_display );
+			bw_trace2( $rates_display, "rates display array", false );
+			if ( sizeof( $rates_display ) > 0) {
+				foreach ( $rates_display as $key => $value ) {
 					$rate = $this->get_rate( $value );
 					$this->set_shippingrate_title( $rate );
 					$rates[] = $rate;

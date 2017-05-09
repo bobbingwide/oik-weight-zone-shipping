@@ -1,4 +1,3 @@
-
 <?php // (C) Copyright Bobbing Wide 2017
 
 /**
@@ -80,7 +79,6 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 		$rates[] = array( "0.2", "2.00", "Derf" );
 		return $rates;
 	}
-		
 	
 	 
 	/**
@@ -91,18 +89,21 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 	 */
 	function test_rate_option_round_trip() {
 		$rates = $this->rates_array();
-		$options = $this->oik_weight_zone_shipping->rates_to_options( $rates );
+		$options = $this->oik_weight_zone_shipping->rates_array_to_display( $rates );
 		bw_trace2( $options, "options", false );
-		$actual_output = $this->oik_weight_zone_shipping->options_to_rates( $options );
+		$actual_output = $this->oik_weight_zone_shipping->convert_rates_display_to_rates_table( $options );
 		$this->assertEquals( $rates, $actual_output );
 	}
 	
 	/**
 	 * Simulates converting the previously stored options to a rates array
+	 * 
+	 *
+	 * 
 	 */
 	function test_get_rates_table_from_string() {
 		$string_rate = " 0.1 | 1234.56 / Fred\n 0.2 , 2.0 , Derf";
-    $this->oik_weight_zone_shipping->instance_settings['rates'] = $string_rate;
+    $this->oik_weight_zone_shipping->instance_settings['rates_table'] = $string_rate;
     $actual = $this->oik_weight_zone_shipping->get_rates();
 		$expected = $this->rates_array();
 		$this->assertEquals( $expected, $actual );
