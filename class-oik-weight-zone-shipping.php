@@ -17,7 +17,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	public $shippingrate_title;
 	
-	private $allowed_delimiters = array( "|", "/", "," );
+	/**
+	 * We no longer allow a '/' in the localized version.
+	 * But it's supported in the original 'options' field.
+	 */
+	private $allowed_delimiters = array( "|", "," );
 	private $dot_rate_delimiters = array( "|", "/", "," );
 	private $decimal_separator;
 	private $thousand_separator; 
@@ -61,7 +65,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *  public $instance_form_fields = array();
 	 *  public $instance_settings = array();
 	 */
-	function init() { 
+	function init() {
+	
 		$this->set_allowed_delimiters();
 		$this->init_form_fields();
 		$this->init_settings();
@@ -175,11 +180,27 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 							 );
 			//bw_trace2( $rate, "rate" );
 			$this->add_rate( $rate );
+			$this->allow_html( $rate );
 		} else {
 			add_filter( "woocommerce_cart_no_shipping_available_html", array( $this, 'no_shipping_available') );
 		}
 	}
-
+	
+	/**
+	 * Allows HTML in the label
+	 *
+	 * Out of the box, WooCommerce doesn't allow HTML in the label. 
+	 * Disabling the filter function lets us use it.
+	 * The user is responsible for ensuring tags are paired.
+	 * 
+	 * @param array $rate
+	 */
+	function allow_html( $rate ) {
+		if ( false !== strpos( $rate['label'], "<" ) ) {
+			remove_filter( "woocommerce_shipping_rate_label", "sanitize_text_field" );
+		} 
+	}
+	
 	/**
 	 * Gets the rate array field from a rates display line using user defined delimiters
 	 *
@@ -376,7 +397,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		foreach ( $rates as $key => $rate ) {
 			$rates_display[] = $this->convert_rate_array_to_rate_display( $rate );
 		}
-		$rates_display = implode( "\n", $rates_display );
+		$rates_display = implode( "\n", $rates_display ); 
+		$rates_display = stripslashes( $rates_display );
 		return $rates_display;
 	}
 
