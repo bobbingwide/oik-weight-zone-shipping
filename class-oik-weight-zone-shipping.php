@@ -1,7 +1,7 @@
 <?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
- * Single rate weight zone shipping class WooCommerce Extension
+ * Single rate weight zone shipping class WooCommerce extension
  *
  * Implements single rate shipping charges by weight and shipping zone
  * Depends on WooCommerce 2.6, 3.0 or higher
@@ -41,7 +41,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function __construct( $instance_id = 0 ) {
 		parent::__construct( $instance_id );
-		bw_trace2( );
+		//bw_trace2( );
 		//bw_backtrace();
 		$this->supports = array( "shipping-zones", "instance-settings", "instance-settings-modal" );
 		$this->id = 'oik_weight_zone_shipping'; 
@@ -61,8 +61,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *  public $instance_form_fields = array();
 	 *  public $instance_settings = array();
 	 */
-	function init() {
-	
+	function init() { 
 		$this->set_allowed_delimiters();
 		$this->init_form_fields();
 		$this->init_settings();
@@ -76,7 +75,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->tax_status       = $this->get_option('tax_status');
 		$this->fee              = $this->get_option('fee');
 		
-		bw_trace2( $this->fee, "this->fee" );
+		//bw_trace2( $this->fee, "this->fee" );
 		$this->instance_settings['fee'] = $this->price( $this->fee );
 		
 		
@@ -89,7 +88,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->title              = $this->get_option( 'title' );
 		$this->shippingrate_title = $this->title;
 	}
-	
+
 	/**
 	 * Set the instance form fields
 	 * 
@@ -107,7 +106,6 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					'description' => __( 'The title which the user sees during checkout, if not defined in Shipping Rates.', 'oik-weight-zone-shipping' ),
 					'default'     => __( 'Weight zone shipping', 'oik-weight-zone-shipping' ),
 					'desc_tip'    => true,
-
 				),
 				'rates'       => array(
 					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
@@ -128,7 +126,6 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 						'none' 		=> _x( 'None', 'Tax status', 'oik-weight-zone-shipping' )
 						)
 				),
-				
 				'fee'        => array(
 					'title'       => __( 'Handling Fee', 'oik-weight-zone-shipping' ),
 					'type'        => 'text',
@@ -138,14 +135,15 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 				),
 		);
 	}
-	
+
 	/**
 	 * Return if the method is available
+	 *
+	 * @return bool true 
 	 */
-	
 	function is_available( $package ) {
-		bw_trace2();
-		return( true );
+		//bw_trace2();
+		return true;
 	}
 
 	/**
@@ -181,7 +179,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 			add_filter( "woocommerce_cart_no_shipping_available_html", array( $this, 'no_shipping_available') );
 		}
 	}
-	
+
 	/**
 	 * Gets the rate array field from a rates display line using user defined delimiters
 	 *
@@ -211,7 +209,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		}
 		return $rate;
 	}
-	
+
 	/**
 	 * Returns a decimal price value
 	 * 
@@ -238,7 +236,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$value = str_replace( $this->decimal_separator, ".", $value );
 		return $value;
 	}
-	
+
 	/**
 	 * Get the useable rate
 	 *
@@ -247,9 +245,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function get_rate( $value ) {
 		$rate_array = $this->get_local_rate( $value, $this->delimiters );
-		bw_trace2( $rate_array, "rate array", true );
+		//bw_trace2( $rate_array, "rate array", true );
 		return $rate_array;
 	}
+
 	/** 
 	 * Sets the allowed field delimiters
 	 * 
@@ -272,11 +271,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$acceptable = $this->acceptable_separators();
 		
 		$allowed_delimiters = array_diff( $this->allowed_delimiters, array( $this->decimal_separator, $this->thousand_separator ) );
-		bw_trace2( $allowed_delimiters, "allowed delimiters" );
+		//bw_trace2( $allowed_delimiters, "allowed delimiters" );
 		$this->allowed_delimiters = $allowed_delimiters;
 		return $acceptable;
 	}
-	
+
 	/**
 	 * Tests separators are acceptable
 	 *
@@ -302,7 +301,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		}
 		return $acceptable;
 	}
-	
+
 	/**
 	 * Returns the rates table
 	 *
@@ -313,15 +312,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function get_rates() {
 		$rates = $this->instance_settings['rates_table'];
-		bw_trace2( $rates, "rates", false );
+		//bw_trace2( $rates, "rates", false );
 		if ( !$rates || !is_array( $rates) ) {
 			$this->delimiters = $this->dot_rate_delimiters;
 			$rates = $this->get_rates_table( $rates );
 		}
 		return $rates;
 	}
-	
-	
+
 	/**
 	 * Validates the rates field converting it to a rates array
 	 *
@@ -330,12 +328,12 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @return 
 	 */
 	function validate_rates_field( $key, $value ) {
-		bw_trace2();
+		//bw_trace2();
 		$this->delimiters = $this->allowed_delimiters;
 		$value = $this->get_rates_table( $value ); 
 		return $value;
 	}
-	
+
 	/**
 	 * Validate the fee to be a valid currency value
 	 *
@@ -344,10 +342,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */ 
 	function validate_fee_field( $key, $value ) {
 		$value = $this->get_value_as_decimal( $value );
-		bw_trace2();
+		//bw_trace2();
 		return $value;
 	}
-	
+
 	/**
 	 * Convert a rates table array to a rates display string
 	 * 
@@ -356,22 +354,23 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *
 	 */
 	function convert_rates_to_display() {
+		//bw_trace2( $this, "this", false );
 		if ( !isset( $this->instance_settings['rates'] ) ) {
 			$this->instance_settings['rates'] = null;
+			$this->delimiters = $this->dot_rate_delimiters;
 		}
 		$this->instance_settings['rates_table'] = $this->instance_settings['rates'];
 		$rates_display = $this->rates_array_to_display( $this->instance_settings['rates'] );
 		$this->instance_settings['rates'] = $rates_display;
 	}
-	
+
 	/**
 	 * Converts rates table to rates display
 	 *
 	 * @param array $rates
 	 */
-	
 	function rates_array_to_display( $rates ) {
-		bw_trace2();
+		//bw_trace2();
 		$rates = $this->get_rates_table( $rates );
 		$rates_display = array();
 		foreach ( $rates as $key => $rate ) {
@@ -379,9 +378,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		}
 		$rates_display = implode( "\n", $rates_display );
 		return $rates_display;
-	
 	}
-	
+
 	/**
 	 * Converts a rate array to an option string
 	 * 
@@ -399,15 +397,17 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$rate_display = implode( " | ", $rate_display );
 		return( $rate_display );
 	}
-	
+
 	/**
 	 * Display a localized number
 	 * 
 	 * Used to Format the Max weight where the number of decimals is not limited.
 	 *
 	 * https://en.wikipedia.org/wiki/Decimal_mark
+	 * 
+	 * @param string $value
+	 * @return string localized decimal
 	 */
-	
 	function local_number( $value ) {
 		if ( is_numeric( $value ) ) { 
 			//$local_number = number_format( $value, 10 , $this->decimal_separator, $this->thousand_separator );
@@ -417,15 +417,17 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		} else {
 			$local_number = $value;
 		}
-		bw_trace2( $local_number, "local_number" );
+		//bw_trace2( $local_number, "local_number" );
 		return( $local_number );
 	} 
 	
 	/**
-	 *
+	 * Returns a localized price
 	 * 
-	 * @TODO Confirm we can handle thousand separator
-	 *
+	 * Note: Does not support negative values.
+	 * 
+	 * @param string $value
+	 * @return string localized version
 	 */
 	function price( $value ) {
 		if ( is_numeric( $value ) ) { 
@@ -436,7 +438,22 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		return $price;
 	}
 	
-		
+	/**
+	 * Retrieves the original options string
+	 * 
+	 * We can't use `$this->get_option("options")` since the "options" field is no longer part of the form.
+	 * So we have to check for the existence of the field and return that if set.
+	 * 
+	 * @return string|null value of 'options', if set
+	 */
+	function get_options() {
+		if ( isset( $this->instance_settings['options'] ) ) {
+			$options = $this->instance_settings['options'];
+		} else {
+			$options = null;
+		}
+		return $options;
+	}
 
 	/**
 	 * Retrieves all rates available
@@ -453,9 +470,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		if ( $value ) {
 			$rates = $value;
 		} else {
-			$rates = $this->get_option( "options" );
+			$rates = $this->get_options();
+			//bw_backtrace();
+			//bw_trace2( $this, "thus", false );
 		}
-		bw_trace2( $rates, "rates" ); 
+		//bw_trace2( $rates, "rates" ); 
 		if ( !is_array( $rates ) ) { 			
 			$rates_table = $this->convert_rates_display_to_rates_table( $rates );
 		} else {
@@ -463,7 +482,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		}
 		return $rates_table;
 	}
-	
+
 	/**
 	 * Convert rates display to rates table
 	 * 
@@ -472,13 +491,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function convert_rates_display_to_rates_table( $rates_display ) {
 		$rates = array();
-	
-		bw_trace2( $rates_display, "rates display", false );
+		//bw_trace2( $rates_display, "rates display", false );
 		$rates_display = trim( $rates_display );
-			
 		if ( $rates_display ) {
 			$rates_display = (array) explode( "\n", $rates_display );
-			bw_trace2( $rates_display, "rates display array", false );
+			//bw_trace2( $rates_display, "rates display array", false );
 			if ( sizeof( $rates_display ) > 0) {
 				foreach ( $rates_display as $key => $value ) {
 					$rate = $this->get_rate( $value );
@@ -486,10 +503,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 					$rates[] = $rate;
 				}
 			}
-    }	else {
-			//$rates[] = array( "Invalid currency separators", "Please change", "" );
-		}		
-		return( $rates );
+		}
+		return $rates;
 	}
     
 	/**
@@ -500,15 +515,14 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @param array $rate - the current rate that we're going to use
 	 */
 	function set_shippingrate_title( $rate ) {
-		bw_trace2();
-		//bw_backtrace();
+		//bw_trace2();
 		if ( isset( $rate[2] ) && $rate[2] != "" ) {
 			$title = $rate[2];
 		} else {
 			$title = $this->title;
 		}
 		$this->shippingrate_title = $title;
-		return( $title );
+		return $title ;
 	} 
  
 	/**
@@ -518,7 +532,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @return array sorted by ascending weight. 
 	 */
 	function sort_ascending( $rates_array ) {
-		bw_trace2();
+		//bw_trace2();
 		$weights = array();
 		$rates = array();
 		//$group = array();
@@ -550,7 +564,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * 50|100.00| Not free up to and including 50
 	 * 999|0.00| Free above 50, up to 999
 	 * 1000| X | Maximum weight supported is 999
-   * `
+	 * `
 	 * 
 	 * If the weight is above this highest value then the most expensive rate is chosen.
 	 * This is rather silly logic... but it'll do for the moment.
@@ -567,7 +581,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$found_weight = -1;
 		$found = false;
 		if ( sizeof( $rates_array ) > 0) {
-		  $rates = $this->sort_ascending( $rates_array );
+			$rates = $this->sort_ascending( $rates_array );
 			//bw_trace2( $rates, "rates" );
 			foreach ( $rates as $key => $value) {
 				if ( $weight <= $value[0] && ( $found_weight < $weight ) ) {
