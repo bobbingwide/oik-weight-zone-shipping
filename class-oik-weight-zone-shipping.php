@@ -415,7 +415,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$rate_display = array();
 		$rate_display[] = $this->local_number( array_shift( $rate ) );
 		$rate_display[] = $this->price( array_shift( $rate ) );
-		$rate_display[] = implode( " ", $rate );
+		$rate_display[] = stripslashes( implode( " ", $rate ) );
 		$rate_display = implode( " | ", $rate_display );
 		return( $rate_display );
 	}
@@ -543,6 +543,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		} else {
 			$title = $this->title;
 		}
+		$title = stripslashes( $title );
 		$this->shippingrate_title = $title;
 		return $title ;
 	} 
