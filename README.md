@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce
 * Requires at least: 4.5.2
-* Tested up to: 4.7.3
-* Stable tag: 0.0.3
+* Tested up to: 4.7.4
+* Stable tag: 0.1.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,17 +46,18 @@ Tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
 
 # What is the separator for the shipping rate table? 
 
-You can use vertical bars, forward slashes or commas.
-Blanks around values will be ignored.
-
+Vertical bars. Blanks around values will be ignored.
 ```
-0| 9.99| Zero weight
-1 / 1.24 /
-2 , 3.45 ,
+0 | 9.99| Zero weight
+1 | 1.24 |
+2 | 3.45 |
 3 | 4.56
 ```
 
-Enter one rate per line.
+- Use of slash characters are no longer supported as these are now allowed in the Method Title override.
+- Whether or not you can use a comma depends on your Currency options.
+- If your Thousand or Decimal separator is a comma then it can't be used as a field delimiter.
+- Enter one rate per line.
 
 
 # How do I set the Method Title? 
@@ -64,10 +65,10 @@ Enter one rate per line.
 Set the default Method Title and add overrides in the Shipping Rates table
 
 ```
-0| 9.99| Zero weight
-1 / 1.24 /
-2 , 3.45 ,
-3 | 4.56 , Another method title override
+0 | 9.99| Zero weight
+1 | 1.24 |
+2 | 3.45 |
+3 | 4.56 | Another method title override
 10 | 0 | Free shipping between 3 and 10 kgs
 999 | ZZZ | Maximum cart weight is 10 kgs
 ```
@@ -103,6 +104,9 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 7. WooCommerce > System Status > Tools > Shipping debug mode
 
 ## Upgrade Notice 
+# 0.1.0 
+Now supports local currency format and HTML in the shipping method title override.
+
 # 0.0.3 
 Tested with WooCommerce 3.0, WordPress 4.7.3 and PHP 7.1
 
@@ -118,6 +122,15 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.1.0 
+* Changed: Add logic to format weight; using WooCommerce functions
+* Changed: Added Swedish language. Props @jyourstone
+* Changed: Improve styling of the Shipping rates textarea field https://github.com/bobbingwide/oik-weight-zone-shipping/issues/19
+* Changed: Reconcile with oik-weight-zone-shipping-pro https://github.com/bobbingwide/oik-weight-zone-shipping/issues/3
+* Changed: Support HTML in the method title override https://github.com/bobbingwide/oik-weight-zone-shipping/issues/18
+* Changed: Supports local currency separators in Cost and Fee fields https://github.com/bobbingwide/oik-weight-zone-shipping/issues/11
+* Tested: with WooCommerce 3.0, WordPress 4.7.4 and PHP 7.1 https://github.com/bobbingwide/oik-weight-zone-shipping/issues/14
+
 # 0.0.3 
 * Tested: With WooCommerce 3.0, [Issue 14](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/14)
 * Tested: With WordPress 4.7.3 and WordPress Multisite
