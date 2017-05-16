@@ -180,25 +180,9 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 							 );
 			//bw_trace2( $rate, "rate" );
 			$this->add_rate( $rate );
-			$this->allow_html( $rate );
 		} else {
 			add_filter( "woocommerce_cart_no_shipping_available_html", array( $this, 'no_shipping_available') );
 		}
-	}
-	
-	/**
-	 * Allows HTML in the label
-	 *
-	 * Out of the box, WooCommerce doesn't allow HTML in the label. 
-	 * Disabling the filter function lets us use it.
-	 * The user is responsible for ensuring tags are paired.
-	 * 
-	 * @param array $rate
-	 */
-	function allow_html( $rate ) {
-		if ( false !== strpos( $rate['label'], "<" ) ) {
-			remove_filter( "woocommerce_shipping_rate_label", "sanitize_text_field" );
-		} 
 	}
 	
 	/**

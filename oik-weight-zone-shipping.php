@@ -71,8 +71,10 @@ function oik_weight_zone_shipping_woocommerce_init() {
 	if ( oik_weight_zone_shipping_check_woo_version() ) {
 		add_filter( 'woocommerce_shipping_methods', 'oik_weight_zone_woocommerce_shipping_methods' );
 		add_action( 'woocommerce_shipping_init', 'oik_weight_zone_woocommerce_shipping_init' );
+		add_filter( 'woocommerce_shipping_rate_label', 'oik_weight_zone_shipping_shipping_rate_label', 9 );
 	}
 }
+
 
 /**
  * Check the WooCommerce version against the minimum required level
@@ -88,6 +90,24 @@ function oik_weight_zone_shipping_check_woo_version( $minimum_required = "2.6" )
 	$active = version_compare( $version, $minimum_required, "ge" );
 	return( $active );
 }
+
+/**
+ * Disables the sanitize_text_field filter to allow HTML in the label
+ * 
+ * 
+ * Out of the box, WooCommerce doesn't allow HTML in the label. 
+ * We intercept this filter simply to disable the filter that WooCommerce added.
+ * The user is responsible for ensuring tags are paired.
+ * There's no real need to check if the $label contains any HTML.
+ * Removing the filter multiple times is not a problem.
+ * 
+ * @param string $label which may contain HTML
+ * @return string the same
+ */
+function oik_weight_zone_shipping_shipping_rate_label( $label ) { 
+	remove_filter( "woocommerce_shipping_rate_label", "sanitize_text_field" );
+	return $label;
+}			
 
 if ( !function_exists( "bw_trace2" ) ) {
   function bw_trace2( $p=null ) { return $p; }
