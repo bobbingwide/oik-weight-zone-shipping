@@ -47,6 +47,7 @@ Tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
 # What is the separator for the shipping rate table? 
 
 Vertical bars. Blanks around values will be ignored.
+
 ```
 0 | 9.99| Zero weight
 1 | 1.24 |
@@ -54,10 +55,10 @@ Vertical bars. Blanks around values will be ignored.
 3 | 4.56
 ```
 
-- Use of slash characters are no longer supported as these are now allowed in the Method Title override.
-- Whether or not you can use a comma depends on your Currency options.
-- If your Thousand or Decimal separator is a comma then it can't be used as a field delimiter.
-- Enter one rate per line.
+* Use of slash characters are no longer supported as these are now allowed in the Method Title override.
+* Whether or not you can use a comma depends on your Currency options.
+* If your Thousand or Decimal separator is a comma then it can't be used as a field delimiter.
+* Enter one rate per line.
 
 
 # How do I set the Method Title? 
@@ -95,13 +96,11 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 
 
 ## Screenshots 
-1. Add Shipping Method for Weight zone shipping
-2. Weight zone shipping - initial display
-3. Weight zone shipping rates
-4. Weight zone settings - modal
+1. Add Shipping Method for Weight Zone
+2. Weight Zone Settings - initial display
+3. Weight Zone Settings - shipping rates defined
 5. Cart totals
-6. Checkout shipping rate
-7. WooCommerce > System Status > Tools > Shipping debug mode
+6. Checkout shipping rates
 
 ## Upgrade Notice 
 # 0.1.0 
