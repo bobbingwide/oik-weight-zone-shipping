@@ -66,13 +66,11 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *  public $instance_settings = array();
 	 */
 	function init() {
-	
 		$this->set_allowed_delimiters();
 		$this->init_form_fields();
 		$this->init_settings();
 		$this->init_instance_settings();
 		//bw_trace2( $this->instance_settings, "instance_settings" );
-		$this->convert_rates_to_display();
 
 		$this->enabled          = $this->get_option('enabled');
 		
@@ -632,14 +630,16 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * Generate OIK Weight Zone Shipping Textarea HTML.
 	 *
 	 * This is a copy of WC_Settings_API::generate_textarea_html with
-	 * overrides for the rows and cols values 
-	 * and defaulting the width to 100%
+	 * - conversion of the rates array to a textarea field
+	 * - overrides for the rows and cols values 
+	 * - and defaulting the width to 100%
 	 *
 	 * @param  mixed $key
 	 * @param  mixed $data
 	 * @return string
 	 */
 	public function generate_textarea_html( $key, $data ) {
+		$this->convert_rates_to_display();
 		$field_key = $this->get_field_key( $key );
 		$defaults  = array(
 			'title'             => '',
