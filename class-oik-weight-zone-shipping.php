@@ -314,7 +314,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @return array internal representation of the rates table
 	 */
 	function get_rates() {
-		$rates = $this->instance_settings['rates_table'];
+		$rates = null;
+		if ( isset( $this->instance_settings['rates_table'] ) ) {
+			$rates = $this->instance_settings['rates_table'];
+		} 
 		//bw_trace2( $rates, "rates", false );
 		if ( !$rates || !is_array( $rates) ) {
 			$this->delimiters = $this->dot_rate_delimiters;
