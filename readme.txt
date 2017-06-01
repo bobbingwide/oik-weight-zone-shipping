@@ -4,7 +4,7 @@ Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce
 Requires at least: 4.5.2
 Tested up to: 4.7.5
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 6. Checkout shipping rates
 
 == Upgrade Notice ==
+= 0.1.0 = 
+Update if you're still using WooCommerce 2.6
+
 = 0.1.0 =
 Now supports local currency format and HTML in the shipping method title override.
 
@@ -120,6 +123,9 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.1.1 = 
+* Fixed: Shipping Rates table incorrectly re-displayed in WooCommerce 2.6 non-modal dialog [github bobbingwide oik-weight-zone-shipping issues 20]
+
 = 0.1.0 =
 * Changed: Add logic to format weight; using WooCommerce functions
 * Changed: Added Swedish language. Props @jyourstone
