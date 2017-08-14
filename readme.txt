@@ -130,6 +130,7 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 == Changelog ==
 = 0.1.2 = 
 * Changed: Handling fee can now be a percentage of cart total [github bobbingwide oik-weight-zone-shipping issues 21]
+* Changed: Default to US English and add UK English version [github bobbingwide oik-weight-zone-shipping issues 22]
 * Tested: With WordPress 4.8.1
 * Tested: With WooCommerce 2.6, 3.0 and 3.1
 
