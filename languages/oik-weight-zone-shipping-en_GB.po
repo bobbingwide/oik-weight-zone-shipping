@@ -6,94 +6,96 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
 "POT-Creation-Date: 2017-08-14 11:08:37+00:00\n"
 "MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Language: en_GB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-
 #: class-oik-weight-zone-shipping.php:53
 msgid "Weight Zone"
-msgstr ""
+msgstr "Weight Zone"
 
 #: class-oik-weight-zone-shipping.php:54
 msgid "Lets you charge based on cart weight."
-msgstr ""
+msgstr "Lets you charge based on basket weight."
 
 #: class-oik-weight-zone-shipping.php:55
 msgid "Weight and zone based shipping"
-msgstr ""
+msgstr "Weight and zone based shipping"
 
 #: class-oik-weight-zone-shipping.php:56
 msgid "Define rates for shipping by weight and zone"
-msgstr ""
+msgstr "Define rates for shipping by weight and zone"
 
 #: class-oik-weight-zone-shipping.php:108
 msgid "Method Title"
-msgstr ""
+msgstr "Method Title"
 
 #: class-oik-weight-zone-shipping.php:110
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
-msgstr ""
+msgstr "The title which the user sees during checkout, if not defined in Shipping Rates."
 
 #: class-oik-weight-zone-shipping.php:111
 msgid "Weight zone shipping"
-msgstr ""
+msgstr "Weight zone shipping"
 
 #: class-oik-weight-zone-shipping.php:115
 msgid "Shipping Rates"
-msgstr ""
+msgstr "Shipping Rates"
 
 #: class-oik-weight-zone-shipping.php:117
 msgid ""
 "Set your weight based rates in %1$s for this shipping zone (one per line)."
 "<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | "
 "%2$s | Standard rate"
-msgstr ""
+msgstr "Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | %2$s | Standard rate"
 
 #: class-oik-weight-zone-shipping.php:120
 msgid "Max weight | Cost | Method Title override"
-msgstr ""
+msgstr "Max weight | Cost | Method Title override"
 
 #: class-oik-weight-zone-shipping.php:123
 msgid "Tax Status"
-msgstr ""
+msgstr "Tax Status"
 
 #: class-oik-weight-zone-shipping.php:129
 msgid "Taxable"
-msgstr ""
+msgstr "Taxable"
 
 #: class-oik-weight-zone-shipping.php:130
 msgctxt "Tax status"
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: class-oik-weight-zone-shipping.php:134
 msgid "Handling Fee (fixed or %)"
-msgstr ""
+msgstr "Handling Fee (fixed or %)"
 
 #: class-oik-weight-zone-shipping.php:136
 msgid "Fee excluding tax, e.g. %1$s. Leave blank to disable."
-msgstr ""
+msgstr "Fee excluding tax, e.g. %1$s. Leave blank to disable."
 
 #. Plugin Name of the plugin/theme
 msgid "oik weight zone shipping"
-msgstr ""
+msgstr "oik weight zone shipping"
 
 #. Plugin URI of the plugin/theme
 msgid "https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
-msgstr ""
+msgstr "https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
 
 #. Description of the plugin/theme
 msgid "Weight zone shipping for WooCommerce"
-msgstr ""
+msgstr "Weight zone shipping for WooCommerce"
 
 #. Author of the plugin/theme
 msgid "bobbingwide"
-msgstr ""
+msgstr "bobbingwide"
 
 #. Author URI of the plugin/theme
 msgid "https://www.oik-plugins.com/author/bobbingwide"
-msgstr ""
+msgstr "https://www.oik-plugins.com/author/bobbingwide"
+
