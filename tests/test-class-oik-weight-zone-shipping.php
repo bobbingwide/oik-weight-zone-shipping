@@ -121,4 +121,39 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 		$this->assertEquals( "123,456.78901230", $result );
 	
 	} 
+	
+	
+	/**
+	 * Tests the handling fee calculation which can now be a percentage of the total cost
+	 * 
+	 * Here we rely on contents_cost being public. Who defines fee?
+	 */
+	function test_handling_fee() {
+	
+		$this->oik_weight_zone_shipping->fee = "";
+		$this->oik_weight_zone_shipping->contents_cost( 100 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$this->assertEquals( 0, $fee );
+		
+		$this->oik_weight_zone_shipping->fee = "1.23";
+		$this->oik_weight_zone_shipping->contents_cost( 100 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$this->assertEquals( 1.23, $fee );
+		
+		$this->oik_weight_zone_shipping->fee = "10%";
+		$this->oik_weight_zone_shipping->contents_cost( 100 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$this->assertEquals( 10.0, $fee );
+		
+		$this->oik_weight_zone_shipping->fee = "1.23%";
+		$this->oik_weight_zone_shipping->contents_cost( 9.87 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$expected = 0.121401;
+		$this->assertEquals( $expected, $fee );
+	}
+	
+	function test_assert_equals_message() {
+		$fee = 0.121041;
+		$this->assertEquals( $fee, 0.121041, '', 0.00001 );
+	}
 }

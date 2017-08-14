@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce
 Requires at least: 4.5.2
-Tested up to: 4.7.5
-Stable tag: 0.1.1
+Tested up to: 4.8.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,7 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 * Maximum cart weight
 * WooCommerce 2.6, 3.0 and above
 * Available in English, French and Swedish
+* Handling fee as fixed rate or percentage of total cart cost
 
 
 == Frequently Asked Questions ==
@@ -102,7 +103,11 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 6. Checkout shipping rates
 
 == Upgrade Notice ==
-= 0.1.0 = 
+
+= 0.1.2 = 
+Update if you need handling fee as percentage of total cart cost
+
+= 0.1.1 = 
 Update if you're still using WooCommerce 2.6
 
 = 0.1.0 =
@@ -123,6 +128,11 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.1.2 = 
+* Changed: Handling fee can now be a percentage of cart total [github bobbingwide oik-weight-zone-shipping issues 21]
+* Tested: With WordPress 4.8.1
+* Tested: With WooCommerce 2.6, 3.0 and 3.1
+
 = 0.1.1 = 
 * Fixed: Shipping Rates table incorrectly re-displayed in WooCommerce 2.6 non-modal dialog [github bobbingwide oik-weight-zone-shipping issues 20]
 

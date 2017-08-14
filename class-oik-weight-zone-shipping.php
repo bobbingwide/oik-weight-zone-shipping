@@ -28,6 +28,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	private $decimals;
 	
 	private $delimiters = null;
+	private $contents_cost = 0.0;
   
 	/**
 	 * Constructor for OIK_Weight_Zone_Shipping class
@@ -130,7 +131,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 						)
 				),
 				'fee'        => array(
-					'title'       => __( 'Handling Fee', 'oik-weight-zone-shipping' ),
+					'title'       => __( 'Handling Fee (fixed or %)', 'oik-weight-zone-shipping' ),
 					'type'        => 'text',
 					'description' => sprintf( __( 'Fee excluding tax, e.g. %1$s. Leave blank to disable.', 'oik-weight-zone-shipping' ), $three_fifty ),
 					'default'     => '',
@@ -148,6 +149,37 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		//bw_trace2();
 		return true;
 	}
+	
+	/**
+	 * Calculates handling fee 
+	 * 
+	 * 
+	 */
+	function handling_fee() {
+		$fee = 0;
+		if ( $this->fee ) {
+			if ( false !== strpos( $this->fee, "%" ) ) {
+				$decimal = str_replace( "%", "", $this->fee );
+				$fee = $this->contents_cost() * ( $decimal / 100 );
+			} else {
+				$fee = $this->fee; 
+			}
+		}
+		return $fee;
+	}
+	
+	/**
+	 * Sets / gets contents_cost
+	 * 
+	 * @param decimal|null $cost
+	 * @return decimal current value of contents_cost
+	 */
+	function contents_cost( $cost=null ) {
+		if ( $cost ) {
+			$this->contents_cost = $cost;
+		}
+		return $this->contents_cost;
+	}
 
 	/**
 	 * Calculate shipping rates
@@ -157,6 +189,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @param array $package 
 	 */
 	function calculate_shipping( $package = array() ) {
+		$this->contents_cost( $package['contents_cost'] );
 		$woocommerce = function_exists('WC') ? WC() : $GLOBALS['woocommerce'];
 		$rates = $this->get_rates();
 		//bw_trace2( $rates, "rates" );
@@ -166,8 +199,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		
 		if ( $final_rate !== false && is_numeric( $final_rate )) {
 			$taxable = ($this->tax_status == 'taxable') ? true : false;
-			if ( $this->fee > 0 && $package['destination']['country'] ) {
-			 $final_rate += $this->fee;
+			if ( $package['destination']['country'] ) {
+				$final_rate += $this->handling_fee();
 			}
 			$rate = array(
 							 'id'        => $this->id . "_" .  $this->instance_id, 
@@ -331,7 +364,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *
 	 * @param string $key
 	 * @param string $value
-	 * @return 
+	 * @return string 
 	 */
 	function validate_rates_field( $key, $value ) {
 		//bw_trace2();
@@ -341,10 +374,13 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	}
 
 	/**
-	 * Validate the fee to be a valid currency value
+	 * Validates the fee to be a valid currency value or percentage
 	 *
 	 * Allow for local currency separators
 	 *
+	 * @param string $key
+	 * @param string $value
+	 * @return string 
 	 */ 
 	function validate_fee_field( $key, $value ) {
 		$value = $this->get_value_as_decimal( $value );
@@ -432,6 +468,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * Returns a localized price
 	 * 
 	 * Note: Does not support negative values.
+	 * Should cater for percentages.
 	 * 
 	 * @param string $value
 	 * @return string localized version
