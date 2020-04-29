@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce
 Requires at least: 4.5.2
-Tested up to: 4.8.1
-Stable tag: 0.1.2
+Tested up to: 5.4
+Stable tag: 0.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,8 +41,8 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 1. Set your delivery rates for each Shipping zone in WooCommerce->Settings->Shipping
 
 = Which version of WooCommerce does this work on? =
-
-Tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
+Now tested with WooCommerce 4.0.1
+Previously tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
 
 = What is the separator for the shipping rate table? = 
 
@@ -104,6 +104,9 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 
 == Upgrade Notice ==
 
+= 0.1.3 =
+Tested with WordPress 5.4, WooCommerce 4.0.1 and PHPUnit 8.
+
 = 0.1.2 = 
 Update if you need handling fee as percentage of total cart cost
 
@@ -128,6 +131,13 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.1.3 =
+* Changed: Updated tests for PHPUnit 8 [github bobbingwide oik-weight-zone-shipping issues 24]
+* Tested: With WordPress 5.4
+* Tested: With WooCommerce 4.0.1
+* Tested: With PHPUnit 8
+* Tested: With PHP 7.3 and 7.4
+
 = 0.1.2 = 
 * Changed: Handling fee can now be a percentage of cart total [github bobbingwide oik-weight-zone-shipping issues 21]
 * Changed: Default to US English and add UK English version [github bobbingwide oik-weight-zone-shipping issues 22]
