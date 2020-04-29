@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017-2020
 
 /**
  * @package oik-weight-zone-shipping
@@ -20,7 +20,7 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 	 * @TODO We're using live data from qw/wordpress here. This is only just about good enough until we can generate it dynamically.
 	 * WooCommerce WC_Helper_product isn't quite enough for our needs.
 	 */
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 		oik_require( "oik-weight-zone-shipping.php", "oik-weight-zone-shipping" );
 		
@@ -102,7 +102,7 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 	 * 
 	 */
 	function test_get_rates_table_from_string() {
-		$string_rate = " 0.1 | 1234.56 / Fred\n 0.2 , 2.0 , Derf";
+		$string_rate = " 0.1 | 1234.56 / Fred\n 0.2 , 2.00 , Derf";
     $this->oik_weight_zone_shipping->instance_settings['rates_table'] = $string_rate;
     $actual = $this->oik_weight_zone_shipping->get_rates();
 		$expected = $this->rates_array();
@@ -154,6 +154,6 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 	
 	function test_assert_equals_message() {
 		$fee = 0.121041;
-		$this->assertEquals( $fee, 0.121041, '', 0.00001 );
+		$this->assertEqualsWithDelta( $fee, 0.121041,0.00001 );
 	}
 }

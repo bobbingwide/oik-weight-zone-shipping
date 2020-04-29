@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017-2020
 
 /**
  * @package oik-weight-zone-shipping
@@ -19,7 +19,7 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 	 * @TODO We're using live data from qw/wordpress here. This is only just about good enough until we can generate it dynamically.
 	 * WooCommerce WC_Helper_product isn't quite enough for our needs.
 	 */
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 		oik_require( "oik-weight-zone-shipping.php", "oik-weight-zone-shipping" );
 		if ( !class_exists( 'WC_Shipping_Method' ) ) {
@@ -27,7 +27,7 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 		} else {
 			//echo . PHP_EOL .  'good' . PHP_EOL;
 		}
-		oik_require( "tests/framework/helpers/class-wc-helper-product.php", "woocommerce" );
+		oik_require( "tests/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
 		
 		if ( !did_action( "woocommerce_init" ) ) {	
 			gob();
@@ -57,27 +57,30 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 	
 	}
 	
-	/** 
-	 * Create dummy product and add it to the cart
-	 * 
-	 * WC_Help_Product does not set the weight so it's no use to us.
-	 * Unless we can $product->update() after setting it ourselves.
-	 * 
-	 * Also, the code is changing
+	/**
+	 * Add products to the cart
+	 *
+	 * WC_Helper_Product sets the weight to 1.1.
+	 * We need to update to 0.1 and save().
 	 */
 	function add_to_cart( $qty=1 ) {
-	
-    $product = WC_Helper_Product::create_simple_product();
+
+		$product = WC_Helper_Product::create_simple_product();
 		bw_trace2( $product, "product" );
 		// set_weight() is in 2.7.. which will become 3.0.0
-		//  $product->set_weight( 1.00 );
-		$product->weight = 1.0;
-    WC()->cart->empty_cart();
-    // Add the product to the cart. Methods returns boolean on failure, string on success.
-    //WC()->cart->add_to_cart( 31631 /* $product->get_id(), 1 );
-		// Note: 31631 weighs 100gms. ie. 0.1 kg
+		$product->set_weight( 0.1 );
+		$product->save();
+		$id = $product->get_id();
+		//print_r( $product );
+		WC()->cart->empty_cart();
+		// Add the product to the cart. Methods returns boolean on failure, string on success.
+		//WC()->cart->add_to_cart( 31631 /* $product->get_id(), 1 );
+		// Note:
+		// 31631 weighs 100gms. ie. 0.1 kg
 		// 30114 weighs 1 kg
-		WC()->cart->add_to_cart( 31631, $qty );
+		//$id = 3065; // on s.b/wordpress
+		//$id = 31631; // on q.w/wordpress
+		WC()->cart->add_to_cart( $id, $qty );
 	}
 
 	/**
