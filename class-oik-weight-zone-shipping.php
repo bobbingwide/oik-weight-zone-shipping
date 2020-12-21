@@ -192,7 +192,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->contents_cost( $package['contents_cost'] );
 		$woocommerce = function_exists('WC') ? WC() : $GLOBALS['woocommerce'];
 		$rates = $this->get_rates();
-		//bw_trace2( $rates, "rates" );
+		bw_trace2( $rates, "rates" );
 		$weight = $woocommerce->cart->cart_contents_weight;
 		//bw_trace2( $weight, "cart contents weight" );
 		$final_rate = $this->pick_smallest_rate( $rates, $weight );
@@ -621,23 +621,27 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 * @return - rate - may be false if no rate can be determined
 	 */
 	function pick_smallest_rate( $rates_array, $weight) {
+	    bw_trace2();
 		$rate = null;
 		$max_rate = false;
 		$found_weight = -1;
 		$found = false;
 		if ( sizeof( $rates_array ) > 0) {
 			$rates = $this->sort_ascending( $rates_array );
-			//bw_trace2( $rates, "rates" );
+			bw_trace2( $rates, "rates", false );
 			foreach ( $rates as $key => $value) {
 				if ( $weight <= $value[0] && ( $found_weight < $weight ) ) {
 					if ( true || null === $rate || $value[1] < $rate ) {
 						$rate = $value[1];
-						//bw_trace2( $rate, "rate is now", false );
+						bw_trace2( $rate, "rate is now", false );
 						$found_weight = $value[0];
 						$found = true;
 						$this->set_shippingrate_title( $value );
-					}   
-				}
+					}
+
+				}else {
+				    bw_trace2( $value, $weight, false );
+			    }
 				if ( !$found  ) {
 					if ( !$max_rate || $value[1] > $max_rate ) {
 						$max_rate = $value[1];

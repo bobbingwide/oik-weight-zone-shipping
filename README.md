@@ -3,9 +3,9 @@
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce
-* Requires at least: 4.5.2
-* Tested up to: 5.4
-* Stable tag: 0.1.3
+* Requires at least: 5.0
+* Tested up to: 5.6
+* Stable tag: 0.1.4
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,8 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 6. Checkout shipping rates
 
 ## Upgrade Notice 
+# 0.1.4 
+Tested with WordPress 5.6 and WooCommerce 4.8.0
 
 # 0.1.3 
 Tested with WordPress 5.4, WooCommerce 4.0.1 and PHPUnit 8.
@@ -132,6 +134,14 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.1.4 
+* Changed: Update tests for WooCommerce 4.8.0,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/26
+
+* Tested: With WordPress 5.6
+* Tested: With WooCommerce 4.8.0
+* Tested: With PHPUnit 8
+* Tested: With PHP 7.4
+
 # 0.1.3 
 * Changed: Updated tests for PHPUnit 8 https://github.com/bobbingwide/oik-weight-zone-shipping/issues/24
 * Tested: With WordPress 5.4
