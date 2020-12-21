@@ -1,18 +1,26 @@
-# Copyright (C) 2017 oik weight zone shipping
+# Copyright (C) 2020 oik weight zone shipping
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.1.2\n"
+"Project-Id-Version: oik weight zone shipping 0.1.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2017-08-14 11:08:37+00:00\n"
+"POT-Creation-Date: 2020-12-21 14:56:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: en_GB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+#: class-oik-weight-zone-shipping-migration.php:529
+msgid "Number of country groups: %d"
+msgstr "Number of country groups: %d"
+
+#: class-oik-weight-zone-shipping-migration.php:541
+msgid "No countries in Country Group %d."
+msgstr "No countries in Country Group %d."
+
 #: class-oik-weight-zone-shipping.php:53
 msgid "Weight Zone"
 msgstr "Weight Zone"
@@ -79,23 +87,18 @@ msgstr "Handling Fee (fixed or %)"
 msgid "Fee excluding tax, e.g. %1$s. Leave blank to disable."
 msgstr "Fee excluding tax, e.g. %1$s. Leave blank to disable."
 
-#. Plugin Name of the plugin/theme
 msgid "oik weight zone shipping"
 msgstr "oik weight zone shipping"
 
-#. Plugin URI of the plugin/theme
 msgid "https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
 msgstr "https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping"
 
-#. Description of the plugin/theme
 msgid "Weight zone shipping for WooCommerce"
 msgstr "Weight zone shipping for WooCommerce"
 
-#. Author of the plugin/theme
 msgid "bobbingwide"
 msgstr "bobbingwide"
 
-#. Author URI of the plugin/theme
-msgid "https://www.oik-plugins.com/author/bobbingwide"
-msgstr "https://www.oik-plugins.com/author/bobbingwide"
+msgid "https://bobbingwide.com/about-bobbing-wide"
+msgstr "https://bobbingwide.com/about-bobbing-wide"
 
