@@ -27,7 +27,8 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 		} else {
 			//echo . PHP_EOL .  'good' . PHP_EOL;
 		}
-		oik_require( "tests/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
+		//oik_require( "tests/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
+		oik_require( "tests/legacy/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
 		
 		if ( !did_action( "woocommerce_init" ) ) {	
 			gob();
