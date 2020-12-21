@@ -3,7 +3,7 @@
  * Plugin Name: oik weight zone shipping
  * Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping
  * Description: Weight zone shipping for WooCommerce
- * Version: 0.1.4
+ * Version: 0.2.0
  * Author: bobbingwide
  * Author URI: https://bobbingwide.com/about-bobbing-wide
  * License: GPL2
@@ -30,10 +30,11 @@ oik_weight_zone_shipping_loaded();
  * Implement 'woocommerce_shipping_methods' filter for oik-weight-zone-shipping
  *
  * @param array $methods array of shipping method classes
- * @return array array with "OIK_Weight_Zone_Shipping" included
+ * @return array array with "OIK_Weight_Zone_Shipping_Multi_rate" included.
  */  
 function oik_weight_zone_woocommerce_shipping_methods( $methods ) {
-	$methods['oik_weight_zone_shipping'] = 'OIK_Weight_Zone_Shipping';
+	$methods['oik_weight_zone_shipping'] = 'OIK_Weight_Zone_Shipping_Multi_Rate';
+
 	return $methods;
 }
 
@@ -48,7 +49,25 @@ function oik_weight_zone_woocommerce_shipping_init() {
 		if ( !class_exists( "OIK_Weight_Zone_Shipping" ) ) {
 			require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping.php" );
 		}
-  }
+		if ( !class_exists( "OIK_Weight_Zone_Shipping_Multi_Rate" ) ) {
+			require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping-multi-rate.php" );
+		}
+	}
+}
+  
+/**
+ * Implement 'woocommerce_shipping_methods' filter for oik-weight-zone-shipping-pro
+ *
+ * Note: This filter is implemented with a higher priority value than oik-weight-zone-shipping so that it overrides the free version.
+ * The user doesn't need the free ( single rate ) version when the multi-rate version is active. 
+ * It would probably only confuse if both methods were available.
+ *
+ * @param array $methods array of shipping method classes
+ * @return array array with "OIK_shipping" included
+ */  
+function oik_weight_zone_shipping_multi_rate_woocommerce_shipping_methods( $methods ) {
+	$methods['oik_weight_zone_shipping'] = 'OIK_Weight_Zone_Shipping_Multi_Rate';
+	return $methods;
 }
 
 /**
@@ -88,8 +107,100 @@ function oik_weight_zone_shipping_check_woo_version( $minimum_required = "2.6" )
 	$woocommerce = WC();
 	$version = $woocommerce->version;	
 	$active = version_compare( $version, $minimum_required, "ge" );
-	return( $active );
+	//bw_trace2( $active, 'active?' . $version, false );
+	return $active;
 }
+
+/**
+ * Return the migration instance
+ * 
+ * Fetch the class and get the single instance
+ */
+function oik_weight_zone_shipping_multi_rate_migration() {
+	require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping-migration.php" );
+	$oikwzsm = OIK_Weight_Zone_Shipping_Migration::instance();
+	return( $oikwzsm );
+}
+
+/**
+ * Return the oik plugin update instance
+ * 
+ * Fetch the class and get the single instance
+ */
+function oik_weight_zone_shipping_multi_rate_plugin_update() {
+	require_once( dirname( __FILE__ ) . "/libs/class-oik-plugin-update.php" );
+	$oik_update = OIK_Plugin_Update::instance();
+	return( $oik_update );
+}
+
+/**
+ * Implement "plugin_action_links" for oik-weight-zone-shipping-pro 
+ */	
+function oik_weight_zone_shipping_multi_rate_plugin_action_links( $links, $file, $plugin_data, $context ) {
+	$oik_update = oik_weight_zone_shipping_multi_rate_plugin_update();
+	$links = $oik_update->plugin_action_links( $links, $file, $plugin_data, $context );
+	return( $links );
+}
+
+/**
+ * Implement "after_plugin_row_oik-weight-zone-shipping-pro/oik-weight-zone-shipping-multi-rate.php" action
+ * 
+ * Use separate class files depending on the WooCommerce version
+ *
+ * For v0.0.2 we'll disable the after_plugin_row logic when WooCommerce 2.6 is available. 
+ * @TODO Reinstate when the status message is more useful.
+ * 
+ */
+function oik_weight_zone_shipping_multi_rate_after_plugin_row( $plugin_file, $plugin_data, $status ) {
+	if ( oik_weight_zone_shipping_multi_rate_check_woo_version() ) {
+	} else {
+		require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping-notready.php" );
+		$oikwzsm = OIK_Weight_Zone_Shipping_Notready::instance();
+		$oikwzsm->after_plugin_row( $plugin_file, $plugin_data, $status );
+	}	
+} 
+
+if ( !function_exists( "bw_trace2" ) ) {
+  function bw_trace2( $p=null ) { return $p; }
+	function bw_backtrace() {}
+}
+
+
+/**
+ * Implement "admin_menu" 
+ */
+function oik_weight_zone_shipping_multi_rate_admin_menu() {
+
+	load_plugin_textdomain( "oik-weight-zone-shipping-pro", false, 'oik-weight-zone-shipping-pro/languages' );
+	$oik_update = oik_weight_zone_shipping_multi_rate_plugin_update();
+	$oik_update->admin_menu();
+}
+
+/**
+ * Implement "oik_register_plugin_server" 
+ * 
+ * We assume that oik_update::oik_register_plugin_server() has been loaded, otherwise the action should not have been invoked.
+ *
+ */
+function oik_weight_zone_shipping_multi_rate_register_plugin_server() {
+	oik_update::oik_register_plugin_server( __FILE__ );
+}
+
+/**
+ * Implement "oik_admin_menu" 
+ * 
+ * We assume that oik_register_plugin_server() has been loaded, otherwise the action should not have been invoked.
+ *
+ */
+function oik_weight_zone_shipping_multi_rate_oik_admin_menu() {
+	oik_register_plugin_server( __FILE__ );
+}
+
+/** 
+ * @TODO - do we need to add logic for these hooks?
+ * 
+ * - network_admin_plugin_action_links_{$plugin_file}
+ */
 
 /**
  * Disables the sanitize_text_field filter to allow HTML in the label
