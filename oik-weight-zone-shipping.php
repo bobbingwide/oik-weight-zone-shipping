@@ -82,9 +82,9 @@ function oik_weight_zone_shipping_loaded() {
 }
 
 /** 
- * Implement "woocommerce_init"
+ * Implements "woocommerce_init".
  *
- * Only enable the logic if the minimum required version of WooCommerce is active  
+ * Only enable the logic if the minimum required version of WooCommerce is active.
  */
 function oik_weight_zone_shipping_woocommerce_init() {
 	if ( oik_weight_zone_shipping_check_woo_version() ) {
@@ -94,14 +94,13 @@ function oik_weight_zone_shipping_woocommerce_init() {
 	}
 }
 
-
 /**
- * Check the WooCommerce version against the minimum required level
+ * Checks the WooCommerce version against the minimum required level.
  *
- * Note: The code has been tested against WooCommerce 2.6 and 3.0
+ * Note: The code has been tested against WooCommerce 2.6 and 3.0 up to 4.8.0
  * 
- * @param string $minimum_required Minimum required level
- * @return bool true if the minimum level is active
+ * @param string $minimum_required Minimum required level.
+ * @return bool true if the minimum level is active.
  */
 function oik_weight_zone_shipping_check_woo_version( $minimum_required = "2.6" ) {
 	$woocommerce = WC();
@@ -123,73 +122,8 @@ function oik_weight_zone_shipping_multi_rate_migration() {
 }
 
 /**
- * Return the oik plugin update instance
- * 
- * Fetch the class and get the single instance
- */
-function oik_weight_zone_shipping_multi_rate_plugin_update() {
-	require_once( dirname( __FILE__ ) . "/libs/class-oik-plugin-update.php" );
-	$oik_update = OIK_Plugin_Update::instance();
-	return( $oik_update );
-}
-
-/**
- * Implement "plugin_action_links" for oik-weight-zone-shipping-pro 
- */	
-function oik_weight_zone_shipping_multi_rate_plugin_action_links( $links, $file, $plugin_data, $context ) {
-	$oik_update = oik_weight_zone_shipping_multi_rate_plugin_update();
-	$links = $oik_update->plugin_action_links( $links, $file, $plugin_data, $context );
-	return( $links );
-}
-
-
-
-if ( !function_exists( "bw_trace2" ) ) {
-  function bw_trace2( $p=null ) { return $p; }
-	function bw_backtrace() {}
-}
-
-
-/**
- * Implement "admin_menu" 
- */
-function oik_weight_zone_shipping_multi_rate_admin_menu() {
-
-	load_plugin_textdomain( "oik-weight-zone-shipping-pro", false, 'oik-weight-zone-shipping-pro/languages' );
-	$oik_update = oik_weight_zone_shipping_multi_rate_plugin_update();
-	$oik_update->admin_menu();
-}
-
-/**
- * Implement "oik_register_plugin_server" 
- * 
- * We assume that oik_update::oik_register_plugin_server() has been loaded, otherwise the action should not have been invoked.
+ * Disables the sanitize_text_field filter to allow HTML in the label.
  *
- */
-function oik_weight_zone_shipping_multi_rate_register_plugin_server() {
-	oik_update::oik_register_plugin_server( __FILE__ );
-}
-
-/**
- * Implement "oik_admin_menu" 
- * 
- * We assume that oik_register_plugin_server() has been loaded, otherwise the action should not have been invoked.
- *
- */
-function oik_weight_zone_shipping_multi_rate_oik_admin_menu() {
-	oik_register_plugin_server( __FILE__ );
-}
-
-/** 
- * @TODO - do we need to add logic for these hooks?
- * 
- * - network_admin_plugin_action_links_{$plugin_file}
- */
-
-/**
- * Disables the sanitize_text_field filter to allow HTML in the label
- * 
- * 
  * Out of the box, WooCommerce doesn't allow HTML in the label. 
  * We intercept this filter simply to disable the filter that WooCommerce added.
  * The user is responsible for ensuring tags are paired.
