@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.1.4\n"
+"Project-Id-Version: oik weight zone shipping 0.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2020-12-21 14:56:44+00:00\n"
+"POT-Creation-Date: 2020-12-22 08:03:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,70 +20,121 @@ msgstr ""
 msgid "No countries in Country Group %d."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:53
-msgid "Weight Zone"
+#: class-oik-weight-zone-shipping-multi-rate.php:41
+msgid "Multi Rate Weight Zone"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:54
-msgid "Lets you charge based on cart weight."
+#: class-oik-weight-zone-shipping-multi-rate.php:42
+msgid ""
+"Lets you charge based on cart weight, supporting multiple rates per weight "
+"range in each table."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:55
-msgid "Weight and zone based shipping"
+#: class-oik-weight-zone-shipping-multi-rate.php:52
+msgid "Multi rate weight and zone based shipping"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:56
-msgid "Define rates for shipping by weight and zone"
+#: class-oik-weight-zone-shipping-multi-rate.php:53
+msgid "Define multiple rates for shipping by weight and zone"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:108
+#: class-oik-weight-zone-shipping-multi-rate.php:116
+#: class-oik-weight-zone-shipping.php:112
 msgid "Method Title"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:110
+#: class-oik-weight-zone-shipping-multi-rate.php:118
+#: class-oik-weight-zone-shipping.php:114
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:111
+#: class-oik-weight-zone-shipping-multi-rate.php:119
+#: class-oik-weight-zone-shipping.php:115
 msgid "Weight zone shipping"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:115
+#: class-oik-weight-zone-shipping-multi-rate.php:125
+#: class-oik-weight-zone-shipping.php:119
 msgid "Shipping Rates"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:117
+#: class-oik-weight-zone-shipping-multi-rate.php:127
+#: class-oik-weight-zone-shipping.php:121
 msgid ""
 "Set your weight based rates in %1$s for this shipping zone (one per line)."
 "<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | "
 "%2$s | Standard rate"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:120
+#: class-oik-weight-zone-shipping-multi-rate.php:130
+#: class-oik-weight-zone-shipping.php:124
 msgid "Max weight | Cost | Method Title override"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:123
+#: class-oik-weight-zone-shipping-multi-rate.php:134
+#: class-oik-weight-zone-shipping.php:127
 msgid "Tax Status"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:129
+#: class-oik-weight-zone-shipping-multi-rate.php:140
+#: class-oik-weight-zone-shipping.php:133
 msgid "Taxable"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:130
+#: class-oik-weight-zone-shipping-multi-rate.php:141
+#: class-oik-weight-zone-shipping.php:134
 msgctxt "Tax status"
 msgid "None"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:134
+#: class-oik-weight-zone-shipping-multi-rate.php:147
+#: class-oik-weight-zone-shipping.php:138
 msgid "Handling Fee (fixed or %)"
 msgstr ""
 
-#: class-oik-weight-zone-shipping.php:136
+#: class-oik-weight-zone-shipping-multi-rate.php:149
+#: class-oik-weight-zone-shipping.php:140
 msgid "Fee excluding tax, e.g. %1$s. Leave blank to disable."
+msgstr ""
+
+#: class-oik-weight-zone-shipping-multi-rate.php:156
+msgid "Restrict shipping classes"
+msgstr ""
+
+#: class-oik-weight-zone-shipping-multi-rate.php:158
+msgid "Enable allowed shipping class checking"
+msgstr ""
+
+#: class-oik-weight-zone-shipping-multi-rate.php:163
+msgid "Allowed shipping classes"
+msgstr ""
+
+#: class-oik-weight-zone-shipping-multi-rate.php:167
+msgid ""
+"Choose the allowed shipping classes when Restrict shipping classes is "
+"checked."
+msgstr ""
+
+#: class-oik-weight-zone-shipping-multi-rate.php:565
+msgid "Automatic migration from weight/country shipping."
+msgstr ""
+
+#: class-oik-weight-zone-shipping.php:57
+msgid "Weight Zone"
+msgstr ""
+
+#: class-oik-weight-zone-shipping.php:58
+msgid "Lets you charge based on cart weight."
+msgstr ""
+
+#: class-oik-weight-zone-shipping.php:59
+msgid "Weight and zone based shipping"
+msgstr ""
+
+#: class-oik-weight-zone-shipping.php:60
+msgid "Define rates for shipping by weight and zone"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
