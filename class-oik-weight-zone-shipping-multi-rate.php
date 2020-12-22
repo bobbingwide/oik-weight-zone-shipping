@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015-2017
+<?php // (C) Copyright Bobbing Wide 2015-2020
 
 /**
  * Multi rate weight/zone shipping class WooCommerce Extension
@@ -38,8 +38,8 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 
 		
 		$this->do_we_need_settings_for_migration();
-		$this->method_title = __( 'Multi Rate Weight Zone', 'oik-weight-zone-shipping-pro' );
-		$this->method_description = __( 'Lets you charge based on cart weight, supporting multiple rates per weight range in each table.', 'oik-weight-zone-shipping-pro' );
+		$this->method_title = __( 'Multi Rate Weight Zone', 'oik-weight-zone-shipping' );
+		$this->method_description = __( 'Lets you charge based on cart weight, supporting multiple rates per weight range in each table.', 'oik-weight-zone-shipping' );
 		
 		if ( $instance_id === 0 ) {
 			//$this->method_title = "Migration";
@@ -49,8 +49,8 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 			add_action( 'woocommerce_update_options_shipping_oik_weight_zone_shipping', array( $this, 'process_migration' ) );
 			
 		}	else {
-			$this->admin_page_heading     = __( 'Multi rate weight and zone based shipping', 'oik-weight-zone-shipping-pro' );
-			$this->admin_page_description = __( 'Define multiple rates for shipping by weight and zone', 'oik-weight-zone-shipping-pro' );
+			$this->admin_page_heading     = __( 'Multi rate weight and zone based shipping', 'oik-weight-zone-shipping' );
+			$this->admin_page_description = __( 'Define multiple rates for shipping by weight and zone', 'oik-weight-zone-shipping' );
 			add_filter( 'woocommerce_shipping_' . $this->id . '_instance_settings_values', array( $this, "instance_settings_values"), 10, 2 );
 		}
 		//add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -113,58 +113,58 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 		$product_shipping_classes = $this->get_product_shipping_classes();
 		$this->instance_form_fields = array(
 				'title'      => array(
-					'title'       => __( 'Method Title', 'oik-weight-zone-shipping-pro' ),
+					'title'       => __( 'Method Title', 'oik-weight-zone-shipping' ),
 					'type'        => 'text',
-					'description' => __( 'The title which the user sees during checkout, if not defined in Shipping Rates.', 'oik-weight-zone-shipping-pro' ),
-					'default'     => __( 'Weight zone shipping', 'oik-weight-zone-shipping-pro' ),
+					'description' => __( 'The title which the user sees during checkout, if not defined in Shipping Rates.', 'oik-weight-zone-shipping' ),
+					'default'     => __( 'Weight zone shipping', 'oik-weight-zone-shipping' ),
 					'desc_tip'    => true,
 
 				),
 				
 				'rates'       => array(
-					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping-pro' ),
+					'title'       => __( 'Shipping Rates', 'oik-weight-zone-shipping' ),
 					'type'        => 'textarea',
-					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | %2$s | Standard rate', 'oik-weight-zone-shipping-pro' ),  get_option( 'woocommerce_weight_unit' ), $six_ninety_five ),
+					'description' => sprintf( __( 'Set your weight based rates in %1$s for this shipping zone (one per line).<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | %2$s | Standard rate', 'oik-weight-zone-shipping' ),  get_option( 'woocommerce_weight_unit' ), $six_ninety_five ),
 					'default'     => '',
 					'desc_tip'    => false,
-					'placeholder'	=> __( 'Max weight | Cost | Method Title override', 'oik-weight-zone-shipping-pro' ),
+					'placeholder'	=> __( 'Max weight | Cost | Method Title override', 'oik-weight-zone-shipping' ),
 				),
 				
 				'tax_status' => array(
-					'title'       => __( 'Tax Status', 'oik-weight-zone-shipping-pro' ),
+					'title'       => __( 'Tax Status', 'oik-weight-zone-shipping' ),
 					'type'        => 'select',
 					'class' 			=> 'wc-enhanced-select',
 					'description' => '',
 					'default'     => 'taxable',
 					'options'     => array(
-						'taxable' 	=> __( 'Taxable', 'oik-weight-zone-shipping-pro' ),
-						'none' 		=> _x( 'None', 'Tax status', 'oik-weight-zone-shipping-pro' )
+						'taxable' 	=> __( 'Taxable', 'oik-weight-zone-shipping' ),
+						'none' 		=> _x( 'None', 'Tax status', 'oik-weight-zone-shipping' )
 						)
 				),
 				
 				
 				'fee'        => array(
-					'title'       => __( 'Handling Fee (fixed or %)', 'oik-weight-zone-shipping-pro' ),
+					'title'       => __( 'Handling Fee (fixed or %)', 'oik-weight-zone-shipping' ),
 					'type'        => 'text',
-					'description' => sprintf( __( 'Fee excluding tax, e.g. %1$s. Leave blank to disable.', 'oik-weight-zone-shipping-pro' ), $three_fifty ),
+					'description' => sprintf( __( 'Fee excluding tax, e.g. %1$s. Leave blank to disable.', 'oik-weight-zone-shipping' ), $three_fifty ),
 					'default'     => '',
 					'desc_tip'		=> true,
 				),
 				
 				
 				'restrict_shipping_classes' => array( 
-					'title' => __( 'Restrict shipping classes', 'oik-weight-zone-shipping-pro' ),
+					'title' => __( 'Restrict shipping classes', 'oik-weight-zone-shipping' ),
 					'type' => 'checkbox',
-					'description' => __( 'Enable allowed shipping class checking', 'oik-weight-zone-shipping-pro' ),
+					'description' => __( 'Enable allowed shipping class checking', 'oik-weight-zone-shipping' ),
 					'default' => false
 				),
 				
 				'allowed_shipping_classes' => array(
-					'title' => __( 'Allowed shipping classes', 'oik-weight-zone-shipping-pro' ),
+					'title' => __( 'Allowed shipping classes', 'oik-weight-zone-shipping' ),
 					'type' => 'multiselect',
 					
 					'class' 			=> 'wc-enhanced-select',
-					'description' => __( 'Choose the allowed shipping classes when Restrict shipping classes is checked.', 'oik-weight-zone-shipping-pro' ),
+					'description' => __( 'Choose the allowed shipping classes when Restrict shipping classes is checked.', 'oik-weight-zone-shipping' ),
 					'default' => '',
 					'options' => $product_shipping_classes
 				),
