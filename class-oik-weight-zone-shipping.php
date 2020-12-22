@@ -45,6 +45,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 *
 	 */
 	function __construct( $instance_id = 0 ) {
+	    //Uncomment to reproduce issue #28648
+	    //bw_backtrace();
+		//$shipping_zones = WC_Shipping_Zones::get_zones();
+
 		parent::__construct( $instance_id );
 		//bw_trace2( );
 		//bw_backtrace();

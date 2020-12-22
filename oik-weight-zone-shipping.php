@@ -41,7 +41,7 @@ function oik_weight_zone_woocommerce_shipping_methods( $methods ) {
 /**
  * Implement 'woocommerce_shipping_init' to load l10n versions and then initialise weight zone shipping
  * 
- * @TODO Confirm that the class checking for WC_Shipping_Method is just belt and braces. 
+ * The class checking for WC_Shipping_Method is just belt and braces.
  */
 function oik_weight_zone_woocommerce_shipping_init() {
 	if ( class_exists( 'WC_Shipping_Method' ) ) {
@@ -142,23 +142,7 @@ function oik_weight_zone_shipping_multi_rate_plugin_action_links( $links, $file,
 	return( $links );
 }
 
-/**
- * Implement "after_plugin_row_oik-weight-zone-shipping-pro/oik-weight-zone-shipping-multi-rate.php" action
- * 
- * Use separate class files depending on the WooCommerce version
- *
- * For v0.0.2 we'll disable the after_plugin_row logic when WooCommerce 2.6 is available. 
- * @TODO Reinstate when the status message is more useful.
- * 
- */
-function oik_weight_zone_shipping_multi_rate_after_plugin_row( $plugin_file, $plugin_data, $status ) {
-	if ( oik_weight_zone_shipping_multi_rate_check_woo_version() ) {
-	} else {
-		require_once( dirname( __FILE__ ) . "/class-oik-weight-zone-shipping-notready.php" );
-		$oikwzsm = OIK_Weight_Zone_Shipping_Notready::instance();
-		$oikwzsm->after_plugin_row( $plugin_file, $plugin_data, $status );
-	}	
-} 
+
 
 if ( !function_exists( "bw_trace2" ) ) {
   function bw_trace2( $p=null ) { return $p; }

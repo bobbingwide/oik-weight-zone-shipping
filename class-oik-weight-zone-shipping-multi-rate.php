@@ -34,7 +34,8 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	 */
 	function __construct( $instance_id = 0 ) {
 		parent::__construct( $instance_id );
-		//bw_trace2( );
+		bw_trace2();
+
 		
 		$this->do_we_need_settings_for_migration();
 		$this->method_title = __( 'Multi Rate Weight Zone', 'oik-weight-zone-shipping-pro' );
@@ -65,7 +66,8 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	 * If the 'status' is NOT '4' (fully complete) then we'll need to use the class.
 	 *
 	 * Note: If the status is '4' (fully complete) then in order to re-enable the logic
-	 * we currently have to manually update the settings. 
+	 * we currently have to manually update the settings.
+	 *
 	 * It could be possible to check if a Weight Country shipping plugin is still active,
 	 * but is it really necessary?
 	 */
@@ -76,14 +78,27 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 			if ( isset( $oik_settings['status'] ) ) {
 				bw_trace2( $oik_settings, "oik_weight_zone_shipping_settings" );
 				if ( "4" == $oik_settings['status'] ) {
-					$migration_class_needed = false;
+					$migration_class_needed = $this->redo_migration();
 				}
 			}
 		}
 		if ( $migration_class_needed ) {
 			$this->supports[] = "settings";
 		}
-	}	
+	}
+
+	/**
+	 * Determines if we should redo the migration.
+	 *
+	 * We can't call `WC_Shipping_Zones::get_zones()` since it goes recursive.
+	 */
+	function redo_migration() {
+		$data_store = WC_Data_Store::load( 'shipping-zone' );
+		$raw_zones  = $data_store->get_zones();
+		bw_trace2( $raw_zones, 'shipping_zones', false);
+		$redo = 0 === count( $raw_zones );
+		return $redo;
+	}
 
 	/**
 	 * Return the instance form fields
