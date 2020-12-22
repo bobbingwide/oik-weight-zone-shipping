@@ -1,10 +1,10 @@
 === Weight zone shipping for WooCommerce ===
 Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
-Tags: shipping, weight, zone, woocommerce
+Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 0.1.4
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,13 @@ Adds shipping zone weight based shipping cost calculations to your WooCommerce s
 
 == Description ==
 
+A WooCommerce extension to calculate shipping charges based on cart weight and delivery zone.
+- Supports multiple rates per shipping rate table
+- Supports shipping class restriction
+
 If your WooCommerce store needs to calculate shipping charges based on cart weight and delivery region then this plugin is for you.
 
 = Documentation =
-
-This plugin replaces the oik-weightcountry-shipping plugin. Designed to work with WooCommerce 2.6 and 3.0, it is integrated with shipping zones.
 
 Each shipping zone can contain multiple shipping methods with rates that apply to all regions in the zone.
 
@@ -28,8 +30,8 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 * FREE shipping in selected weight ranges
 * Default rates using the Rest of the World shipping zone
 * Maximum cart weight
-* WooCommerce 2.6, 3.0 and above
-* Available in English, French and Swedish
+* WooCommerce 2.6 and above
+* Internationalised
 * Handling fee as fixed rate or percentage of total cart cost
 
 
@@ -41,7 +43,7 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 1. Set your delivery rates for each Shipping zone in WooCommerce->Settings->Shipping
 
 = Which version of WooCommerce does this work on? =
-Now tested with WooCommerce 4.0.1
+Now tested with WooCommerce 4.8.0.
 Previously tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
 
 = What is the separator for the shipping rate table? = 
@@ -76,23 +78,15 @@ Set the default Method Title and add overrides in the Shipping Rates table
 
 = Does this support multiple rates per weight/shipping zone combination? =
 
-Yes - from version 0.0.2
-
-Because this plugin is integrated with WooCommerce Shipping Zones you can achieve it by 
-creating multiple shipping methods using Weight zone shipping.
+Yes. You can either define multiple rates per shipping rate table or
+create multiple shipping methods using Weight zone shipping.
 
 For each shipping method you add to a zone set the Method Title to reflect the rates.
 e.g. UK second class, UK first class.
 
-If you want to define multiple rates in the Shipping Rate table then you will need to use the
-[Multi rate weight zone shipping for WooCommerce plugin](https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping-pro/),
-which is the premium version of the plugin. 
-
-
 = Are there any other FAQs? =
 
 Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping/?oik-tab=faq)
-and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping-pro/?oik-tab=faq)
 																													
 
 == Screenshots ==
@@ -103,6 +97,9 @@ and [Multi rate weight shipping for WooCommerce FAQ's](https://www.oik-plugins.c
 6. Checkout shipping rates
 
 == Upgrade Notice ==
+= 0.2.0 = 
+Supports migration from oik-weightcountry-shipping. Supports Multiple Rates in each Shipping table and Shipping class restrictions.
+
 = 0.1.4 =
 Tested with WordPress 5.6 and WooCommerce 4.8.0
 
@@ -133,9 +130,13 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.2.0 =
+* Changed: Implements most of the logic previously available in oik-weight-zone-shipping-pro,[github bobbingwide oik-weight-zone-shipping issues 26]
+
+
+
 = 0.1.4 = 
 * Changed: Update tests for WooCommerce 4.8.0,[github bobbingwide oik-weight-zone-shipping issues 26]
-
 * Tested: With WordPress 5.6
 * Tested: With WooCommerce 4.8.0
 * Tested: With PHPUnit 8
