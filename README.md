@@ -2,10 +2,10 @@
 ![banner](https://raw.githubusercontent.com/bobbingwide/oik-weight-zone-shipping/master/assets/oik-weight-zone-shipping-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
-* Tags: shipping, weight, zone, woocommerce
+* Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 * Requires at least: 5.0
 * Tested up to: 5.6
-* Stable tag: 0.2.0
+* Stable tag: 0.2.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,8 +14,9 @@ Adds shipping zone weight based shipping cost calculations to your WooCommerce s
 ## Description 
 
 A WooCommerce extension to calculate shipping charges based on cart weight and delivery zone.
-- Supports multiple rates per shipping rate table
-- Supports Shipping class restriction
+
+* Supports multiple rates per shipping rate table
+* Supports shipping class restriction
 
 If your WooCommerce store needs to calculate shipping charges based on cart weight and delivery region then this plugin is for you.
 
@@ -34,18 +35,19 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 * WooCommerce 2.6 and above
 * Internationalised
 * Handling fee as fixed rate or percentage of total cart cost
-
+* Supports migration from oik weight/country shipping
 
 ## Frequently Asked Questions 
 
 # Installation 
 1. Upload 'oik-weight-zone-shipping' to the '/wp-content/plugins/' directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Visit WooCommerce->Settings->Shipping
+1. If migrating from oik weight/country shipping use the Multi Rate Weight Zone tab to perform the migration.
 1. Set your delivery rates for each Shipping zone in WooCommerce->Settings->Shipping
 
 # Which version of WooCommerce does this work on? 
-Now tested with WooCommerce 4.8.0.
-Previously tested with WooCommerce 2.6, WooCommerce 3.0 and higher.
+Now tested up to WooCommerce 4.8.0.
 
 # What is the separator for the shipping rate table? 
 
@@ -79,15 +81,11 @@ Set the default Method Title and add overrides in the Shipping Rates table
 
 # Does this support multiple rates per weight/shipping zone combination? 
 
-Yes - from version 0.0.2
-
-Because this plugin is integrated with WooCommerce Shipping Zones you can achieve it by
-creating multiple shipping methods using Weight zone shipping.
+Yes. You can either define multiple rates per shipping rate table or
+create multiple shipping methods.
 
 For each shipping method you add to a zone set the Method Title to reflect the rates.
 e.g. UK second class, UK first class.
-
-Alternatively define multiple rates in the Shipping Rate table
 
 # Are there any other FAQs? 
 
@@ -102,6 +100,9 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 6. Checkout shipping rates
 
 ## Upgrade Notice 
+# 0.2.1 
+Upgrade to 0.2.1 to get the two missing files.
+
 # 0.2.0 
 Supports migration from oik-weightcountry-shipping. Supports Multiple Rates in each Shipping table and Shipping class restrictions.
 
@@ -135,10 +136,15 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.2.1 
+* Fixed: Added missing files that I forgot to commit to SVN,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/27
+
 # 0.2.0 
 * Changed: Implements most of the logic previously available in oik-weight-zone-shipping-pro,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/26
-
-
+* Tested: With WordPress 5.6
+* Tested: With WooCommerce 4.8.0
+* Tested: With PHPUnit 8
+* Tested: With PHP 7.4
 
 # 0.1.4 
 * Changed: Update tests for WooCommerce 4.8.0,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/26
