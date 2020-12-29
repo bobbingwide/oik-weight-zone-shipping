@@ -172,7 +172,7 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	}
 	
 	/** 
-	 * Get all the currently registered shipping classes
+	 * Gets all the currently registered shipping classes.
 	 *
 	 * Note: If a shipping class has been Deleted then the product_shipping_class
 	 * field will not list it any more on the admin page, but it may still be stored in the options table
@@ -181,22 +181,36 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	 * @return array of term ID to term name
 	 */
 	function get_product_shipping_classes() {
-		$args = array( "get" => 'all', "hide_empty" => false );
-		$tags = get_terms( 'product_shipping_class', $args );
-		bw_trace2( $tags, "tags" );
+		//bw_backtrace();
+		$args = array( 'taxonomy' => 'product_shipping_class', 'get' => 'all', 'hide_empty' => false );
+		$tags = get_terms( $args );
+		//bw_trace2( $tags, "tags" );
 		$term_array = $this->bw_term_array( $tags );
 		return( $term_array );
 	}
 	
 	/**
-	 * Build a simple ID, title array from an array of $term objects
-	 * 
+	 * Builds a simple ID, title array from an array of $term objects.
+	 *
+	 * The tests attempt to handle unexpected results from get_terms().
+	 * We do expect the results to be an array, though it's OK to have an empty array; no shipping classes.
+	 *
 	 * @param array $terms Array of term objects
 	 * @return array mapping ID to name
 	 */
 	function bw_term_array( $terms ) {
 		$options = array();
-		//$options = array( 0 => "Any" );
+		if ( null === $terms ) {
+			bw_trace2( $terms, 'null terms - unexpected result');
+			return $options;
+		}
+		if ( is_wp_error( $terms )) {
+			bw_trace2( $terms, 'WP_Error - unexpected result');
+			return $options;
+		}
+		if ( !is_array( $terms ) ) {
+			bw_trace2( $terms, 'Not an array - unexpected result');
+		}
 		if ( count( $terms ) ) {
 			foreach ($terms as $term ) {
 				$options[$term->term_id] = $term->name; 
