@@ -5,7 +5,7 @@
 * Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 * Requires at least: 5.0
 * Tested up to: 5.6
-* Stable tag: 0.2.1
+* Stable tag: 0.2.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 6. Checkout shipping rates
 
 ## Upgrade Notice 
+# 0.2.2 
+Upgrade for internationalized strings for migration.
+
 # 0.2.1 
 Upgrade to 0.2.1 to get the two missing files.
 
@@ -136,6 +139,10 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 ## Changelog 
+# 0.2.2 
+* Changed: Internationlised the strings used in Migration,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/22
+* Changed: in bw_term_array() cater for unexpected results from get_terms(),https://github.com/bobbingwide/oik-weight-zone-shipping/issues/29
+
 # 0.2.1 
 * Fixed: Added missing files that I forgot to commit to SVN,https://github.com/bobbingwide/oik-weight-zone-shipping/issues/27
 
