@@ -210,6 +210,7 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 		}
 		if ( !is_array( $terms ) ) {
 			bw_trace2( $terms, 'Not an array - unexpected result');
+			return $options;
 		}
 		if ( count( $terms ) ) {
 			foreach ($terms as $term ) {
@@ -466,35 +467,35 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	 */
 	function init_migration_form_fields() {
 		$options =  array( //"none" => "None"
-										  "info" => "Refresh information"
-										 , "migrate" => "Perform migration" 
-										 , "complete" => "Complete migration"
+										  "info" => __( "Refresh information", 'oik-weight-zone-shipping' )
+										 , "migrate" => __( "Perform migration", 'oik-weight-zone-shipping' )
+										 , "complete" => __( "Complete migration", 'oik-weight-zone-shipping' )
 										 );
 										 
 										 
-		$status = array( 0 => "0 - Migration not necessary."
-									 , 1 => "1 - Migration not started."
-									 , 2 => "2 - Migration in progress."
-									 , 3 => "3 - Migration complete. "
-									 , 4 => "4 - Migration fully complete."
-									 , 5 => "5 - Unknown."
+		$status = array( 0 => __( "0 - Migration not necessary.", 'oik-weight-zone-shipping' )
+									 , 1 => __( "1 - Migration not started.", 'oik-weight-zone-shipping' )
+									 , 2 => __( "2 - Migration in progress.", 'oik-weight-zone-shipping' )
+									 , 3 => __( "3 - Migration complete. ", 'oik-weight-zone-shipping' )
+									 , 4 => __( "4 - Migration fully complete.", 'oik-weight-zone-shipping' )
+									 , 5 => __( "5 - Unknown.", 'oik-weight-zone-shipping' )
 									 );
 		$this->form_fields = array( 
-			'information' => array( 'title' => 'Information '
+			'information' => array( 'title' => __( 'Information ', 'oik-weight-zone-shipping' )
 													, 'type' => "textarea"
-													, 'description' => "Displays information regarding the migration status. Choose an Action to perform."
+													, 'description' => __( "Displays information regarding the migration status. Choose an Action to perform.", 'oik-weight-zone-shipping' )
 													, 'desc_tip' => true
 													, 'disabled' => true
 													),
-			'status' => array( 'title' => 'Status'
+			'status' => array( 'title' => __('Status', 'oik-weight-zone-shipping' )
 											 , 'type' => 'select'
 											 , 'disabled' => true
 											 , 'options' => $status
 											 ),													
-			'action' => array( 'title' => 'Action'
+			'action' => array( 'title' => __('Action', 'oik-weight-zone-shipping' )
 											 , 'type' => 'select'
 											 , 'options' => $options
-											 , 'description' => 'Choose an action to perform'
+											 , 'description' => __('Choose an action to perform', 'oik-weight-zone-shipping' )
 											 ),
 		);
 	}
@@ -546,7 +547,7 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 		bw_trace2( $this, "this?m" );
 		if ( !$this->instance_id ) {
 			if ( 'oik_weight_zone_shipping' == $this->get_section() ) {
-				$this->method_title = "Migration";
+				$this->method_title = __( "Migration", 'oik-weight-zone-shipping' );
 			}
 		}
 		return( $this->method_title );

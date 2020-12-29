@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2016
+<?php // (C) Copyright Bobbing Wide 2016-2020
 
 /**
  * Implements oik-weight-zone-shipping-pro migration logic
@@ -194,7 +194,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 	function update_migration_status() {
 		$oik_settings = get_option( "woocommerce_oik_weight_zone_shipping_settings" );
 		$oik_settings['status'] = $this->migration_status; 
-		$this->add_message( "Migration status set to: " . $this->migration_status );
+		$this->add_message( sprintf( __( 'Migration status set to: %1$s', 'oik-weight-zone-shipping' ) , $this->migration_status ) );
 		update_option( "woocommerce_oik_weight_zone_shipping_settings", $oik_settings );
 	}
 	
@@ -206,17 +206,17 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 *
 	 */	
 	function map_migration_status() {
-		$states = array( "Migration not necessary."
-									 , "Migration not started."
-									 , "Migration in progress."
-									 , "Migration complete. "
-									 , "Migration fully complete."
-									 , "Unknown." 
+		$states = array( __( "Migration not necessary.", 'oik-weight-zone-shipping' )
+									 , __( "Migration not started.", 'oik-weight-zone-shipping' )
+									 , __( "Migration in progress.", 'oik-weight-zone-shipping' )
+									 , __( "Migration complete. ", 'oik-weight-zone-shipping' )
+									 , __( "Migration fully complete.", 'oik-weight-zone-shipping' )
+									 , __( "Unknown.", 'oik-weight-zone-shipping' )
 									 );
 		if ( isset( $states[ $this->migration_status ] ) ) {
 			$text = $states[ $this->migration_status ];
 		} else {
-			$text = "Truly unknown status: " . $this->migration_status;
+			$text = sprintf( __( 'Truly unknown status: %1$s', 'oik-weight-zone-shipping' ), $this->migration_status );
 		}	
 		return( $text );
 	}	
@@ -289,30 +289,25 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 *
 	 */
 	function map_awd_status( $awd_status ) {
-		$awd_statuses = array( 0 => "Not necessary; no settings, method not enabled, or no country groups defined"
-												 , 1 => "Migration required"
+		$awd_statuses = array( 0 => __( "Not necessary; no settings, method not enabled, or no country groups defined", 'oik-weight-zone-shipping' )
+												 , 1 => __( "Migration required", 'oik-weight-zone-shipping' )
 												 );
     $awd_status_text = $awd_statuses[ $awd_status ];
 		return( $awd_status_text );
 	}
 	
 	/**
-	 * Status  | Meaning        | How determined?
-	 * ------- | -------------- | ----------------------
-	 * 0       | Not necessary  | No awd_settings data, or enabled=no or no country groups defined.
-	 * 1       | Not started    | No Shipping zones defined other than "Rest of the World".
-	 * 2       | In progress    | Shipping zones defined but not methods.
-	 * 3       | Complete       | Shipping zones and shipping methods defined.
-	 * 4       | Fully complete |	woocommerce_awd_shipping_settings enabled="no"
-	 * 5       | Unknown        | Nothing has been done yet.
+	 * Recommends the next action.
+	 *
+	 * @return string
 	 */
 	function recommend_next_action() {
-		$next_actions = array( "0" => "Complete migration" 
-												 , "1" => "Perform migration"
-												 , "2" => "Perform migration"
-												 , "3" => "Complete migration"
-												 , "4" => "None"
-												 , "5" => "Information"
+		$next_actions = array( "0" => __( "Complete migration", 'oik-weight-zone-shipping' )
+												 , "1" => __( "Perform migration", 'oik-weight-zone-shipping' )
+												 , "2" => __( "Perform migration", 'oik-weight-zone-shipping' )
+												 , "3" => __( "Complete migration", 'oik-weight-zone-shipping' )
+												 , "4" => __( "None", 'oik-weight-zone-shipping' )
+												 , "5" => __( "Information", 'oik-weight-zone-shipping' )
 												 );
 		return( $next_actions[ $this->migration_status ] );
 		 												
@@ -327,11 +322,11 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 * @return string HTML to display 
 	 */
 	function information( $oikwzsp ) {
-		$this->add_message( "Current status is: " . $this->map_migration_status() );
-		$this->add_message( "AWD status is: " . $this->map_awd_status( $this->query_awd_status() ) );
-		$this->add_message( "Recommended next action: " . $this->recommend_next_action() );
+		$this->add_message( sprintf( __( 'Current status is: %1$s', 'oik-weight-zone-shipping' ) , $this->map_migration_status() ) );
+		$this->add_message( sprintf( __( 'AWD status is: %1$s', 'oik-weight-zone-shipping' ), $this->map_awd_status( $this->query_awd_status() ) ) );
+		$this->add_message( sprintf( __( 'Recommended next action: %1$s', 'oik-weight-zone-shipping' ), $this->recommend_next_action() ) );
 		// Update the migration_status
-		return( "Performed information" );
+		return( __( "Performed information", 'oik-weight-zone-shipping' ) );
 	}
 	
 	/**
@@ -526,7 +521,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 */
 	function perform_migration( $oikwzsp ) {
 		$country_group_no = $this->get_country_group_no();
-		$this->add_message( sprintf( __(  'Number of country groups: %d', "oik-weight-zone-shipping-pro" ), $country_group_no ) );
+		$this->add_message( sprintf( __( 'Number of country groups: %d', "oik-weight-zone-shipping" ), $country_group_no ) );
 		for ( $cgi = 1; $cgi <= $country_group_no; $cgi++ ) {
 			$countries = $this->get_countries( $cgi );
 			if ( is_array( $countries) && count( $countries ) ) {
@@ -538,7 +533,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 				$this->migrate_awd_settings( $method, $cgi );
 				$zone->save();
 			} else {
-				$this->add_message( sprintf( __( 'No countries in Country Group %d.', 'oik-weight-zone-shipping-pro' ), $cgi ) );
+				$this->add_message( sprintf( __( 'No countries in Country Group %d.', 'oik-weight-zone-shipping' ), $cgi ) );
 			}	
 		}
 		
@@ -559,7 +554,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 		$method = $this->query_shipping_method( $zone );
 		if ( !$method ) {
 			$instance_id = $zone->add_shipping_method( "oik_weight_zone_shipping" );
-			$this->add_message( "Added shipping method instance:" . $instance_id );
+			$this->add_message( sprintf( __( 'Added shipping method instance: %1$s', 'oik-weight-zone-shipping' ) , $instance_id ) );
 			$methods = $zone->get_shipping_methods();
 			$method = $methods[ $instance_id ];
 		}
@@ -580,7 +575,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 		bw_trace2( $shipping_methods, "shipping_methods" );
 		foreach ( $shipping_methods as $shipping_method ) {
 			if ( $shipping_method->id == "oik_weight_zone_shipping" ) {
-				$this->add_message( "Shipping method instance: " .  $shipping_method->instance_id	);
+				$this->add_message( sprintf( __( 'Shipping method instance: %1$s', 'oik-weight-zone-shipping' ),  $shipping_method->instance_id	) );
 				$method = $shipping_method;
 			}
 		}
@@ -598,17 +593,11 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 * 
 	 */
 	function migrate_awd_settings( $method, $cgi ) {
-		//$method->title = $this->get_method_title();
-		//$method->fee = $this->get_fee();
-		//$method->rates = $this->get_rates( $cgi );
-		// that didn't work 
-		//   $method->process_admin_options();
 		$method->instance_settings['title'] = $this->get_method_title();
 		$method->instance_settings['tax_status'] = $this->get_tax_status();
 		$method->instance_settings['fee'] = $this->get_fee();
 		$method->instance_settings['rates'] = $this->get_rates( $cgi );
 		update_option( $method->get_instance_option_key(), $method->instance_settings );
-		
 	}
 	
 	/**
@@ -731,7 +720,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 	 * @return string "Country Group n"
 	 */
 	function shipping_zone_title( $cgi ) {
-		return( "Country Group $cgi" );
+		return( sprintf( __( 'Country Group %d', 'oik-weight-zone-shipping' ) , $cgi ) );
 	}
 	
 	/** 
@@ -744,7 +733,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 	function create_shipping_zone( $cgi ) {
 		$zone_id = null;
 		$shipping_zone_title = $this->shipping_zone_title( $cgi );
-		$this->add_message( "Checking for matching shipping zone: $shipping_zone_title" );
+		$this->add_message( sprintf( __( 'Checking for matching shipping zone: %1$s', 'oik-weight-zone-shipping' ), $shipping_zone_title ) );
 		bw_trace2( $this->shipping_zones, "this shipping_zones" );
 		foreach ( $this->shipping_zones as $zone ) {
 			if ( $zone['zone_name'] == $shipping_zone_title ) {
@@ -753,7 +742,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 		}
 		if ( null === $zone_id ) {
 			$zone = new WC_Shipping_Zone();
-			$this->add_message( "Creating new shipping zone: $shipping_zone_title" );
+			$this->add_message( sprintf( __( 'Creating new shipping zone: %1$s', 'oik-weight-zone-shipping' ) , $shipping_zone_title ) );
 			$zone->set_zone_name( $shipping_zone_title );
 			$zone->save();
 			$zone_id = $zone->get_id();
@@ -780,7 +769,7 @@ class OIK_Weight_Zone_Shipping_Migration {
 		if ( is_array( $countries) && count( $countries ) ) {
 			foreach ( $countries as $country ) {
 				$locations[] = array( 'code' => $country, 'type' => 'country' );
-				$this->add_message( "Adding country: $country" );
+				$this->add_message( sprintf( __( 'Adding country: %1$s', 'oik-weight-zone-shipping' ) , $country ) );
 			}
 		}
 		$zone->set_locations( $locations, "country" );

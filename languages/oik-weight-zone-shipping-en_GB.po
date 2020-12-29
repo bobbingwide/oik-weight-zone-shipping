@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.2.0\n"
+"Project-Id-Version: oik weight zone shipping 0.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2020-12-22 08:03:06+00:00\n"
+"POT-Creation-Date: 2020-12-29 22:08:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: en_GB\n"
@@ -13,13 +13,114 @@ msgstr ""
 "PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-#: class-oik-weight-zone-shipping-migration.php:529
+#: class-oik-weight-zone-shipping-migration.php:197
+msgid "Migration status set to: %1$s"
+msgstr "Migration status set to: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:209
+msgid "Migration not necessary."
+msgstr "Migration not necessary."
+
+#: class-oik-weight-zone-shipping-migration.php:210
+msgid "Migration not started."
+msgstr "Migration not started."
+
+#: class-oik-weight-zone-shipping-migration.php:211
+msgid "Migration in progress."
+msgstr "Migration in progress."
+
+#: class-oik-weight-zone-shipping-migration.php:212
+msgid "Migration complete. "
+msgstr "Migration complete. "
+
+#: class-oik-weight-zone-shipping-migration.php:213
+msgid "Migration fully complete."
+msgstr "Migration fully complete."
+
+#: class-oik-weight-zone-shipping-migration.php:214
+msgid "Unknown."
+msgstr "Unknown."
+
+#: class-oik-weight-zone-shipping-migration.php:219
+msgid "Truly unknown status: %1$s"
+msgstr "Truly unknown status: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:292
+msgid ""
+"Not necessary; no settings, method not enabled, or no country groups defined"
+msgstr "Not necessary; no settings, method not enabled, or no country groups defined"
+
+#: class-oik-weight-zone-shipping-migration.php:293
+msgid "Migration required"
+msgstr "Migration required"
+
+#: class-oik-weight-zone-shipping-migration.php:305
+#: class-oik-weight-zone-shipping-migration.php:308
+#: class-oik-weight-zone-shipping-multi-rate.php:472
+msgid "Complete migration"
+msgstr "Complete migration"
+
+#: class-oik-weight-zone-shipping-migration.php:306
+#: class-oik-weight-zone-shipping-migration.php:307
+#: class-oik-weight-zone-shipping-multi-rate.php:471
+msgid "Perform migration"
+msgstr "Perform migration"
+
+#: class-oik-weight-zone-shipping-migration.php:309
+msgid "None"
+msgstr "None"
+
+#: class-oik-weight-zone-shipping-migration.php:310
+msgid "Information"
+msgstr "Information"
+
+#: class-oik-weight-zone-shipping-migration.php:325
+msgid "Current status is: %1$s"
+msgstr "Current status is: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:326
+msgid "AWD status is: %1$s"
+msgstr "AWD status is: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:327
+msgid "Recommended next action: %1$s"
+msgstr "Recommended next action: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:329
+msgid "Performed information"
+msgstr "Performed information"
+
+#: class-oik-weight-zone-shipping-migration.php:524
 msgid "Number of country groups: %d"
 msgstr "Number of country groups: %d"
 
-#: class-oik-weight-zone-shipping-migration.php:541
+#: class-oik-weight-zone-shipping-migration.php:536
 msgid "No countries in Country Group %d."
 msgstr "No countries in Country Group %d."
+
+#: class-oik-weight-zone-shipping-migration.php:557
+msgid "Added shipping method instance: %1$s"
+msgstr "Added shipping method instance: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:578
+msgid "Shipping method instance: %1$s"
+msgstr "Shipping method instance: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:723
+msgid "Country Group %d"
+msgstr "Country Group %d"
+
+#: class-oik-weight-zone-shipping-migration.php:736
+msgid "Checking for matching shipping zone: %1$s"
+msgstr "Checking for matching shipping zone: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:745
+msgid "Creating new shipping zone: %1$s"
+msgstr "Creating new shipping zone: %1$s"
+
+#: class-oik-weight-zone-shipping-migration.php:772
+msgid "Adding country: %1$s"
+msgstr "Adding country: %1$s"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:41
 msgid "Multi Rate Weight Zone"
@@ -118,7 +219,61 @@ msgid ""
 "checked."
 msgstr "Choose the allowed shipping classes when Restrict shipping classes is checked."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:565
+#: class-oik-weight-zone-shipping-multi-rate.php:470
+msgid "Refresh information"
+msgstr "Refresh information"
+
+#: class-oik-weight-zone-shipping-multi-rate.php:476
+msgid "0 - Migration not necessary."
+msgstr "0 - Migration not necessary."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:477
+msgid "1 - Migration not started."
+msgstr "1 - Migration not started."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:478
+msgid "2 - Migration in progress."
+msgstr "2 - Migration in progress."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:479
+msgid "3 - Migration complete. "
+msgstr "3 - Migration complete. "
+
+#: class-oik-weight-zone-shipping-multi-rate.php:480
+msgid "4 - Migration fully complete."
+msgstr "4 - Migration fully complete."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:481
+msgid "5 - Unknown."
+msgstr "5 - Unknown."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:484
+msgid "Information "
+msgstr "Information "
+
+#: class-oik-weight-zone-shipping-multi-rate.php:486
+msgid ""
+"Displays information regarding the migration status. Choose an Action to "
+"perform."
+msgstr "Displays information regarding the migration status. Choose an Action to perform."
+
+#: class-oik-weight-zone-shipping-multi-rate.php:490
+msgid "Status"
+msgstr "Status"
+
+#: class-oik-weight-zone-shipping-multi-rate.php:495
+msgid "Action"
+msgstr "Action"
+
+#: class-oik-weight-zone-shipping-multi-rate.php:498
+msgid "Choose an action to perform"
+msgstr "Choose an action to perform"
+
+#: class-oik-weight-zone-shipping-multi-rate.php:550
+msgid "Migration"
+msgstr "Migration"
+
+#: class-oik-weight-zone-shipping-multi-rate.php:580
 msgid "Automatic migration from weight/country shipping."
 msgstr "Automatic migration from weight/country shipping."
 
