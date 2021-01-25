@@ -233,7 +233,7 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 		$available = true;
 		$restrict_shipping_classes = $this->get_option( "restrict_shipping_classes" );
 		bw_trace2( $restrict_shipping_classes, 'rsc?');
-		if ( $restrict_shipping_classes /* && ( 'no' !== $restrict_shipping_classes ) */  ) {
+		if ( $restrict_shipping_classes && ( 'no' !== $restrict_shipping_classes ) ) {
 			$allowed_shipping_classes = $this->get_option( "allowed_shipping_classes" );
 			bw_trace2( $allowed_shipping_classes, "allowed_shipping_classes" );	
 			$shipping_classes = $this->get_all_shipping_classes_in_cart( $package['contents'] );
