@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 0.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -144,7 +144,10 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 = 0.2.3 =
 * Fixed: No shipping options were found when restrict shipping classes is 'no' but there are shipping classes in the cart,[github bobbingwide oik-weight-zone-shipping issues 31]
 * Changed: Add WC requires at least and WC tested up to values,[github bobbingwide oik-weight-zone-shipping issues 30]
-* Tested: With WooCommerce 4.9.1
+* Tested: With WooCommerce 5.1.0
+* Tested: With WordPress 5.7
+* Tested: With PHP 8.0
+* Tested: With PHPUnit 9
 
 = 0.2.2 =
 * Changed: Internationlised the strings used in Migration,[github bobbingwide oik-weight-zone-shipping issues 22]

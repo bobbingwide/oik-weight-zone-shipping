@@ -10,7 +10,7 @@
  * Text Domain: oik-weight-zone-shipping
  * Domain Path: /languages
  * WC requires at least: 2.6
- * WC tested up to: 4.9.1
+ * WC tested up to: 5.1.0
  
     Copyright Bobbing Wide 2014-2021 ( email : herb@bobbingwide.com )
 
