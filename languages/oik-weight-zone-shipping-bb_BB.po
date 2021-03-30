@@ -1,16 +1,16 @@
-# Copyright (C) 2020 oik weight zone shipping
+# Copyright (C) 2021 oik weight zone shipping
 # This file is distributed under the same license as the oik weight zone shipping package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik weight zone shipping 0.2.1\n"
+"Project-Id-Version: oik weight zone shipping 0.2.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-weight-zone-shipping\n"
-"POT-Creation-Date: 2020-12-29 22:08:16+00:00\n"
+"POT-Creation-Date: 2021-03-30 15:07:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 #: class-oik-weight-zone-shipping-migration.php:197
@@ -56,13 +56,13 @@ msgstr "Mgiariton rqeiuerd"
 
 #: class-oik-weight-zone-shipping-migration.php:305
 #: class-oik-weight-zone-shipping-migration.php:308
-#: class-oik-weight-zone-shipping-multi-rate.php:472
+#: class-oik-weight-zone-shipping-multi-rate.php:474
 msgid "Complete migration"
 msgstr "Cmolptee mgiariton"
 
 #: class-oik-weight-zone-shipping-migration.php:306
 #: class-oik-weight-zone-shipping-migration.php:307
-#: class-oik-weight-zone-shipping-multi-rate.php:471
+#: class-oik-weight-zone-shipping-multi-rate.php:473
 msgid "Perform migration"
 msgstr "Preofrm mgiariton"
 
@@ -141,29 +141,29 @@ msgid "Define multiple rates for shipping by weight and zone"
 msgstr "Dfenie mluitlpe rtaes fOr sihppnig by wiehgt And znoe"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:116
-#: class-oik-weight-zone-shipping.php:112
+#: class-oik-weight-zone-shipping.php:113
 msgid "Method Title"
 msgstr "Mteohd Ttile"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:118
-#: class-oik-weight-zone-shipping.php:114
+#: class-oik-weight-zone-shipping.php:115
 msgid ""
 "The title which the user sees during checkout, if not defined in Shipping "
 "Rates."
 msgstr "ThE ttile wihch thE uesr sees drunig cehkcuot, If nOt dfenied In Sihppnig Rtaes."
 
 #: class-oik-weight-zone-shipping-multi-rate.php:119
-#: class-oik-weight-zone-shipping.php:115
+#: class-oik-weight-zone-shipping.php:116
 msgid "Weight zone shipping"
 msgstr "Wiehgt znoe sihppnig"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:125
-#: class-oik-weight-zone-shipping.php:119
+#: class-oik-weight-zone-shipping.php:120
 msgid "Shipping Rates"
 msgstr "Sihppnig Rtaes"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:127
-#: class-oik-weight-zone-shipping.php:121
+#: class-oik-weight-zone-shipping.php:122
 msgid ""
 "Set your weight based rates in %1$s for this shipping zone (one per line)."
 "<br /> Format: Max weight | Cost | Method Title override<br />Example: 10 | "
@@ -171,33 +171,33 @@ msgid ""
 msgstr "SEt yuor wiehgt bsaed rtaes In %1$s fOr tihs sihppnig znoe (OnE pEr line).<br /> Froamt: MAx wiehgt | Csot | Mteohd Ttile override<br />Example: 10 | %2$s | Satdnrad rtae"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:130
-#: class-oik-weight-zone-shipping.php:124
+#: class-oik-weight-zone-shipping.php:125
 msgid "Max weight | Cost | Method Title override"
 msgstr "MAx wiehgt | Csot | Mteohd Ttile oevrrdie"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:134
-#: class-oik-weight-zone-shipping.php:127
+#: class-oik-weight-zone-shipping.php:128
 msgid "Tax Status"
 msgstr "TAx Satuts"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:140
-#: class-oik-weight-zone-shipping.php:133
+#: class-oik-weight-zone-shipping.php:134
 msgid "Taxable"
 msgstr "Txabale"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:141
-#: class-oik-weight-zone-shipping.php:134
+#: class-oik-weight-zone-shipping.php:135
 msgctxt "Tax status"
 msgid "None"
 msgstr "Nnoe"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:147
-#: class-oik-weight-zone-shipping.php:138
+#: class-oik-weight-zone-shipping.php:139
 msgid "Handling Fee (fixed or %)"
 msgstr "Hnaldnig FEE (fxied Or %)"
 
 #: class-oik-weight-zone-shipping-multi-rate.php:149
-#: class-oik-weight-zone-shipping.php:140
+#: class-oik-weight-zone-shipping.php:141
 msgid "Fee excluding tax, e.g. %1$s. Leave blank to disable."
 msgstr "FEE ecxulidng tAx, E.g. %1$s. Laeve balnk tO dsibale."
 
@@ -219,61 +219,61 @@ msgid ""
 "checked."
 msgstr "Cohsoe thE allwoed sihppnig calsses wehn Rsertcit sihppnig calsses Is cehkced."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:470
+#: class-oik-weight-zone-shipping-multi-rate.php:472
 msgid "Refresh information"
 msgstr "Rfeersh ifnroamiton"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:476
+#: class-oik-weight-zone-shipping-multi-rate.php:478
 msgid "0 - Migration not necessary."
 msgstr "0 - Mgiariton nOt nceseasry."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:477
+#: class-oik-weight-zone-shipping-multi-rate.php:479
 msgid "1 - Migration not started."
 msgstr "1 - Mgiariton nOt sattred."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:478
+#: class-oik-weight-zone-shipping-multi-rate.php:480
 msgid "2 - Migration in progress."
 msgstr "2 - Mgiariton In porrgses."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:479
+#: class-oik-weight-zone-shipping-multi-rate.php:481
 msgid "3 - Migration complete. "
 msgstr "3 - Mgiariton cmolptee."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:480
+#: class-oik-weight-zone-shipping-multi-rate.php:482
 msgid "4 - Migration fully complete."
 msgstr "4 - Mgiariton fluly cmolptee."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:481
+#: class-oik-weight-zone-shipping-multi-rate.php:483
 msgid "5 - Unknown."
 msgstr "5 - Uknonwn."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:484
+#: class-oik-weight-zone-shipping-multi-rate.php:486
 msgid "Information "
 msgstr "Ifnroamiton"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:486
+#: class-oik-weight-zone-shipping-multi-rate.php:488
 msgid ""
 "Displays information regarding the migration status. Choose an Action to "
 "perform."
 msgstr "Dsilpyas ifnroamiton rgeraidng thE mgiariton satuts. Cohsoe An Atcoin tO preofrm."
 
-#: class-oik-weight-zone-shipping-multi-rate.php:490
+#: class-oik-weight-zone-shipping-multi-rate.php:492
 msgid "Status"
 msgstr "Satuts"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:495
+#: class-oik-weight-zone-shipping-multi-rate.php:497
 msgid "Action"
 msgstr "Atcoin"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:498
+#: class-oik-weight-zone-shipping-multi-rate.php:500
 msgid "Choose an action to perform"
 msgstr "Cohsoe An atcoin tO preofrm"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:550
+#: class-oik-weight-zone-shipping-multi-rate.php:552
 msgid "Migration"
 msgstr "Mgiariton"
 
-#: class-oik-weight-zone-shipping-multi-rate.php:580
+#: class-oik-weight-zone-shipping-multi-rate.php:582
 msgid "Automatic migration from weight/country shipping."
 msgstr "Atumotaic mgiariton form wiehgt/cuotnry sihppnig."
 
