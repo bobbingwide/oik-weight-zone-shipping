@@ -296,6 +296,7 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 	 */
 	function calculate_shipping( $package = array() ) {
 		bw_trace2( $this );
+		$this->contents_cost( $package['contents_cost'] );
 		$woocommerce = function_exists('WC') ? WC() : $GLOBALS['woocommerce'];
 		$rates = $this->get_rates();
 		bw_trace2( $rates, "rates", false );
@@ -307,8 +308,8 @@ class OIK_Weight_Zone_Shipping_Multi_Rate extends OIK_Weight_Zone_Shipping {
 			foreach ( $picked_rates as $key => $data ) {
 				$final_rate = $data['rate'];
 				if ( is_numeric( $final_rate ) ) {
-					if ( $this->fee > 0 && $package['destination']['country'] ) {
-						 $final_rate += $this->fee;
+					if ( $package['destination']['country'] ) {
+						 $final_rate += $this->handling_fee();
 					}
 					$rate = array( 'id' => $this->id . "_" .  $this->instance_id . "_" . $key
 											, 'label' => $data['title']
