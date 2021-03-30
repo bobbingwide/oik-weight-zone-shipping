@@ -82,6 +82,7 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 		$this->type             = 'order';
 		$this->tax_status       = $this->get_option('tax_status');
 		$this->fee              = $this->get_option('fee');
+		$this->fee = trim( $this->fee );
 		
 		//bw_trace2( $this->fee, "this->fee" );
 		$this->instance_settings['fee'] = $this->price( $this->fee );
@@ -161,7 +162,8 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function handling_fee() {
 		$fee = 0;
-		if ( $this->fee ) {
+		//bw_trace2( $this->fee, "Fee", false);
+		if ( !empty( $this->fee ) ) {
 			if ( false !== strpos( $this->fee, "%" ) ) {
 				$decimal = str_replace( "%", "", $this->fee );
 				$fee = $this->contents_cost() * ( $decimal / 100 );
