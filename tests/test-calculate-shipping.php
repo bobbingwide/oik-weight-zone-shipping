@@ -16,7 +16,7 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 	 * - oik-weight-zone-shipping to be active
 	 * - Live data in the database must match what we've hard coded.
 	 * 
-	 * @TODO We're using live data from qw/wordpress here. This is only just about good enough until we can generate it dynamically.
+	 * @TODO We're using live data from sb/wordpress here. This is only just about good enough until we can generate it dynamically.
 	 * WooCommerce WC_Helper_product isn't quite enough for our needs.
 	 */
 	function setUp(): void {
@@ -101,24 +101,43 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 	 * - The shipping methods that are loaded depend on the Zone for the package.
 	 * - The destination defaults to UK since that is the value for user 0 ( taken from customer billing/shipping address)
 	 * - One product weighs 0.1 kg.
-	 * - Two products weigh 0.2 kg. 
-	 * 
-	  
+	 * - Two products weigh 0.2 kg.
+	 *
+	 * Shipping rate table is expected to contain, at a minimum:
+	 * 0.1 | 3.65 | UK shipping ( 0.1 )
+	 * 0.2 | 0.20 | UK shipping ( 0.2 )
+	 *
+	 * Total cart cost is:
+	 *
+	 *
+	 *
+	 *
 	 */
 	function test_calculate_shipping() {
 	
 		$shipping = WC_Shipping::instance();
 		bw_trace2( $shipping, "WC_shipping::instance" );
 		$package = $this->get_package();     
-		$shipping->calculate_shipping( $package );
+		$packages = $shipping->calculate_shipping( $package );
 		bw_trace2( $shipping, "After?" );
-		
+		bw_trace2( $packages, "packages");
+
+		$fee = $this->get_fee_used( $shipping );
+		if ( '1.23%' === $fee ) {
+			$expected_output = 3.77;  // = 3.65 + .12  where .12 is 1.23 percent of 10.00 to 2 decimal places 0.123
+		} elseif ( '1.23' === $fee ) {
+			$expected_output=4.88;  // = 3.65 + 1.23
+		} elseif ( '' === $fee ){
+			$expected_output = 3.65;
+
+		} else {
+			$expected_output = "Handling fee should be either 1.23% or 1.23 or blank";
+		}
 		
 		$cost = $this->get_calculated_shipping_cost( $shipping );
-		$expected_output = 4.88; 
-		
-		
-	 // $oik_shipping = new OIK_Weight_Zone_Shipping( 20 );
+		$this->assertEquals( $expected_output, $cost );
+
+		// $oik_shipping = new OIK_Weight_Zone_Shipping( 20 );
 	 // $this->assertEquals( "oik_weight_zone_shipping", $oik_shipping->id );
 	 // bw_trace2( $oik_shipping, "oik_shipping" );
 	 // $this->assertEquals( "yes", $oik_shipping->enabled );
@@ -131,7 +150,7 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 		//bw_trace2( $rates, "rates" );
 		
 		 	
-		$this->assertEquals( $expected_output, $cost );
+
 	}
 	
 	/**
@@ -143,12 +162,22 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 		$package = $this->get_package( 2 );     
 		$shipping->calculate_shipping( $package );
 		bw_trace2( $shipping, "After?" );
+
+		$fee = $this->get_fee_used( $shipping );
+		if ( '1.23%' === $fee ) {
+			$expected_output = 0.45;  // = 0.20 + .25 where .25 is 1.23% of 10.00 ( .246 ) to two decimal places
+		} elseif ( '1.23' === $fee ) {
+			$expected_output = 1.43;  // = 0.20 + 1.23
+		} elseif ( '' === $fee ){
+			$expected_output = 0.20;
+		} else {
+			$expected_output = "Handling fee should be either 1.23% or 1.23 or blank";
+		}
 		$cost = $this->get_calculated_shipping_cost( $shipping );
-		$expected_output = 1.43; 
 		$this->assertEquals( $expected_output, $cost );
 	}
-	
-	/*
+
+		/*
 	  `
     [shipping_methods] => Array
         (
@@ -214,6 +243,12 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 		$shipping_rate = reset( $rates );
 		$cost = $shipping_rate->cost;
 		return $cost;
+	}
+
+	function get_fee_used( $shipping ) {
+		$oik_weight_zone_shipping = reset( $shipping->shipping_methods );
+		$fee = $oik_weight_zone_shipping->fee;
+		return $fee;
 	}
 	
 }
