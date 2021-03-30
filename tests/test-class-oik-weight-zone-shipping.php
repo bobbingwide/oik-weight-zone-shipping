@@ -150,6 +150,18 @@ class Tests_class_oik_weight_zone_shipping extends BW_UnitTestCase {
 		$fee = $this->oik_weight_zone_shipping->handling_fee();
 		$expected = 0.121401;
 		$this->assertEquals( $expected, $fee );
+
+		$this->oik_weight_zone_shipping->fee = "1.23%";
+		$this->oik_weight_zone_shipping->contents_cost( 10.00 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$expected = 0.123;
+		$this->assertEquals( $expected, $fee );
+
+		$this->oik_weight_zone_shipping->fee = "1.23%";
+		$this->oik_weight_zone_shipping->contents_cost( 20.00 );
+		$fee = $this->oik_weight_zone_shipping->handling_fee();
+		$expected = 0.246;
+		$this->assertEquals( $expected, $fee );
 	}
 	
 	function test_assert_equals_message() {
