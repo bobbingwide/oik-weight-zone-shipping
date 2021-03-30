@@ -4,7 +4,7 @@ Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 0.2.3
+Stable tag: 0.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,9 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 6. Checkout shipping rates
 
 == Upgrade Notice ==
+= 0.2.4 =
+Contains a fix to calculate a handling fee as a percentage of the total cart cost.
+
 = 0.2.3 = 
 Update to fix a problem if some of your products use shipping classes.
 
@@ -141,6 +144,14 @@ Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 
 == Changelog ==
+= 0.2.4 =
+* Fixed: Reintroduces logic to calculate the handling fee as a percentage of the total cost,[github bobbingwide oik-weight-zone-shipping issues 21] 
+* Added: Updated PHPUnit tests to support handling fee as a percentage,[github bobbingwide oik-weight-zone-shipping issues 21] 
+* Tested: With WooCommerce 5.1.0
+* Tested: With WordPress 5.7
+* Tested: With PHP 8.0
+* Tested: With PHPUnit 9
+
 = 0.2.3 =
 * Fixed: No shipping options were found when restrict shipping classes is 'no' but there are shipping classes in the cart,[github bobbingwide oik-weight-zone-shipping issues 31]
 * Changed: Add WC requires at least and WC tested up to values,[github bobbingwide oik-weight-zone-shipping issues 30]
