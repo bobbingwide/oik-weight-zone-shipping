@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 Requires at least: 5.0
-Tested up to: 5.7
-Stable tag: 0.2.4
+Tested up to: 6.0.1
+Stable tag: 0.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,134 +99,13 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 6. Checkout shipping rates
 
 == Upgrade Notice ==
-= 0.2.4 =
-Contains a fix to calculate a handling fee as a percentage of the total cart cost.
-
-= 0.2.3 = 
-Update to fix a problem if some of your products use shipping classes.
-
-= 0.2.2 =
-Upgrade for internationalized strings for migration.
-
-= 0.2.1 =
-Upgrade to 0.2.1 to get the two missing files. 
-
-= 0.2.0 = 
-Supports migration from oik-weightcountry-shipping. Supports Multiple Rates in each Shipping table and Shipping class restrictions.
-
-= 0.1.4 =
-Tested with WordPress 5.6 and WooCommerce 4.8.0
-
-= 0.1.3 =
-Tested with WordPress 5.4, WooCommerce 4.0.1 and PHPUnit 8.
-
-= 0.1.2 = 
-Update if you need handling fee as percentage of total cart cost
-
-= 0.1.1 = 
-Update if you're still using WooCommerce 2.6
-
-= 0.1.0 =
-Now supports local currency format and HTML in the shipping method title override.
-
-= 0.0.3 = 
-Tested with WooCommerce 3.0, WordPress 4.7.3 and PHP 7.1 
-
-= 0.0.2 = 
-Contains a fix so that multiple weight zone shipping methods can be implemented.
-
-= 0.0.1 = 
-Checks for WooCommerce 2.6 or higher
-
-= 0.0.0 = 
-Based on oik-weightcountry-shipping.
-Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
+= 0.2.5 =
+Tested with WordPress 6.0.1 and WooCommerce 6.8.0
 
 
 == Changelog ==
-= 0.2.4 =
-* Fixed: Reintroduces logic to calculate the handling fee as a percentage of the total cost,[github bobbingwide oik-weight-zone-shipping issues 21] 
-* Added: Updated PHPUnit tests to support handling fee as a percentage,[github bobbingwide oik-weight-zone-shipping issues 21] 
-* Tested: With WooCommerce 5.1.0
-* Tested: With WordPress 5.7
-* Tested: With PHP 8.0
+= 0.2.5 = 
+* Tested: With WordPress 6.0.1 and WordPress Multi Site
+* Tested: With WooCommerce 6.8.0
 * Tested: With PHPUnit 9
-
-= 0.2.3 =
-* Fixed: No shipping options were found when restrict shipping classes is 'no' but there are shipping classes in the cart,[github bobbingwide oik-weight-zone-shipping issues 31]
-* Changed: Add WC requires at least and WC tested up to values,[github bobbingwide oik-weight-zone-shipping issues 30]
-* Tested: With WooCommerce 5.1.0
-* Tested: With WordPress 5.7
 * Tested: With PHP 8.0
-* Tested: With PHPUnit 9
-
-= 0.2.2 =
-* Changed: Internationlised the strings used in Migration,[github bobbingwide oik-weight-zone-shipping issues 22]
-* Changed: in bw_term_array() cater for unexpected results from get_terms(),[github bobbingwide oik-weight-zone-shipping issues 29] 
-
-= 0.2.1 =
-* Fixed: Added missing files that I forgot to commit to SVN,[github bobbingwide oik-weight-zone-shipping issues 27]
-
-= 0.2.0 =
-* Changed: Implements most of the logic previously available in oik-weight-zone-shipping-pro,[github bobbingwide oik-weight-zone-shipping issues 26]
-* Tested: With WordPress 5.6
-* Tested: With WooCommerce 4.8.0
-* Tested: With PHPUnit 8
-* Tested: With PHP 7.4
-
-= 0.1.4 = 
-* Changed: Update tests for WooCommerce 4.8.0,[github bobbingwide oik-weight-zone-shipping issues 26]
-* Tested: With WordPress 5.6
-* Tested: With WooCommerce 4.8.0
-* Tested: With PHPUnit 8
-* Tested: With PHP 7.4
-
-= 0.1.3 =
-* Changed: Updated tests for PHPUnit 8 [github bobbingwide oik-weight-zone-shipping issues 24]
-* Tested: With WordPress 5.4
-* Tested: With WooCommerce 4.0.1
-* Tested: With PHPUnit 8
-* Tested: With PHP 7.3 and 7.4
-
-= 0.1.2 = 
-* Changed: Handling fee can now be a percentage of cart total [github bobbingwide oik-weight-zone-shipping issues 21]
-* Changed: Default to US English and add UK English version [github bobbingwide oik-weight-zone-shipping issues 22]
-* Tested: With WordPress 4.8.1
-* Tested: With WooCommerce 2.6, 3.0 and 3.1
-
-= 0.1.1 = 
-* Fixed: Shipping Rates table incorrectly re-displayed in WooCommerce 2.6 non-modal dialog [github bobbingwide oik-weight-zone-shipping issues 20]
-
-= 0.1.0 =
-* Changed: Add logic to format weight; using WooCommerce functions
-* Changed: Added Swedish language. Props @jyourstone
-* Changed: Improve styling of the Shipping rates textarea field [github bobbingwide oik-weight-zone-shipping issues 19]
-* Changed: Reconcile with oik-weight-zone-shipping-pro [github bobbingwide oik-weight-zone-shipping issues 3]
-* Changed: Support HTML in the method title override [github bobbingwide oik-weight-zone-shipping issues 18]
-* Changed: Supports local currency separators in Cost and Fee fields [github bobbingwide oik-weight-zone-shipping issues 11]
-* Tested: with WooCommerce 3.0, WordPress 4.7.4 and PHP 7.1 [github bobbingwide oik-weight-zone-shipping issues 14]
-
-= 0.0.3 =
-* Tested: With WooCommerce 3.0, [Issue 14](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/14)
-* Tested: With WordPress 4.7.3 and WordPress Multisite
-* Tested: With PHP 7.1
-
-= 0.0.2 = 
-* Fixed: Support multiple rates using multiple methods [Issue 6](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/6)  
-* Tested: With WordPress 4.6.1 and WooCommerce 2.6.7 
-* Updated: readme links
-
-= 0.0.1 = 
-* Changed: Move shipping rates before tax status [Issue 1](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/1)
-* Changed: Share OIK_Weight_Shipping class with oik-weight-zone-shipping-pro [Issue 3](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/3)
-* Changed: Implement checks for WooCommerce 2.6 or higher [Issue 4](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/4)
-* Changed: Update language files [Issue 5](https://github.com/bobbingwide/oik-weight-zone-shipping/issues/5)
-* Changed: Updated readme: description, screenshots and captions
-
-= 0.0.0 =
-* Added: New plugin cloned from oik-weightcountry-shipping v1.3.2
-* Changed: Synchronized with code from oik-weight-zone-shipping-pro v0.0.0
-* Changed: readme updated to reflect the move to a new plugin.
-* Changed: Renamed language files
-
-
