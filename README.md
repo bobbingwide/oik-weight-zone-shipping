@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 * Requires at least: 5.0
-* Tested up to: 6.0.1
-* Stable tag: 0.2.5
+* Tested up to: 6.1.1
+* Stable tag: 0.2.6
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 1. Set your delivery rates for each Shipping zone in WooCommerce->Settings->Shipping
 
 # Which version of WooCommerce does this work on? 
-Now tested up to WooCommerce 4.8.0.
+Now tested up to WooCommerce 7.4.0
 
 # What is the separator for the shipping rate table? 
 
@@ -100,13 +100,12 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 6. Checkout shipping rates
 
 ## Upgrade Notice 
-# 0.2.5 
-Tested with WordPress 6.0.1 and WooCommerce 6.8.0
-
+# 0.2.6 
+Tested with WordPress 6.1.1 and WooCommerce 7.4.0
 
 ## Changelog 
-# 0.2.5 
-* Tested: With WordPress 6.0.1 and WordPress Multi Site
-* Tested: With WooCommerce 6.8.0
+# 0.2.6 
+* Tested: With WordPress 6.1.1 and WordPress Multi Site
+* Tested: With WooCommerce 7.4.0
 * Tested: With PHPUnit 9
 * Tested: With PHP 8.0
