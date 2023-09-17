@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015-2017
+<?php // (C) Copyright Bobbing Wide 2015-2017, 2023
 
 /**
  * Single rate weight zone shipping class WooCommerce extension
@@ -29,6 +29,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	
 	private $delimiters = null;
 	private $contents_cost = 0.0;
+
+    public $admin_page_heading;
+    public $admin_page_description;
+    private $type;
   
 	/**
 	 * Constructor for OIK_Weight_Zone_Shipping class
@@ -231,7 +235,9 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function get_local_rate( $value, $allowed_delimiters ) {
 		$value = trim( $value );
-		$value = str_replace( $allowed_delimiters, "|", $value );
+        if ( null !== $allowed_delimiters ) {
+	        $value=str_replace( $allowed_delimiters, "|", $value );
+        }
 		$rate = explode( "|", $value );
 		foreach ( $rate as $key => $val ) {
 			$rate[$key] = trim( $val );
