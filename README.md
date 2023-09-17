@@ -3,9 +3,9 @@
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
-* Requires at least: 5.0
-* Tested up to: 6.3
-* Stable tag: 0.2.7
+* Requires at least: 5.6
+* Tested up to: 6.3.1
+* Stable tag: 0.2.8
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,16 +96,17 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 1. Add Shipping Method for Weight Zone
 2. Weight Zone Settings - initial display
 3. Weight Zone Settings - shipping rates defined
-5. Cart totals
-6. Checkout shipping rates
+4. Cart totals
+5. Checkout shipping rates
 
 ## Upgrade Notice 
-# 0.2.7 
-Tested with WordPress 6.3 and WooCommerce 7.9.0
+# 0.2.8 
+Supports PHP 8.2, tested with WordPress 6.3.1 and WooCommerce 8.1.1
 
 ## Changelog 
-# 0.2.7 
-* Tested: With WordPress 6.3 and WordPress Multi Site
-* Tested: With WooCommerce 7.9.0
-* Tested: With PHPUnit 9
-* Tested: With PHP 8.0
+# 0.2.8 
+* Changed: Support PHP 8.2 #34
+* Tested: With WordPress 6.3.1 and WordPress Multi Site
+* Tested: With WooCommerce 8.1.1
+* Tested: With PHPUnit 9.6
+* Tested: With PHP 8.2

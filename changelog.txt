@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 0.2.7 = 
+Tested with WordPress 6.3 and WooCommerce 7.9.0
+
 = 0.2.6 = 
 Tested with WordPress 6.1.1 and WooCommerce 7.4.0
 
@@ -49,6 +52,12 @@ Based on oik-weightcountry-shipping.
 Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 == Changelog ==
+= 0.2.7 = 
+* Tested: With WordPress 6.3 and WordPress Multi Site
+* Tested: With WooCommerce 7.9.0
+* Tested: With PHPUnit 9
+* Tested: With PHP 8.0
+
 = 0.2.6 = 
 * Tested: With WordPress 6.1.1 and WordPress Multi Site
 * Tested: With WooCommerce 7.4.0
