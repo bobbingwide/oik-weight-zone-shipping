@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 * Requires at least: 5.6
-* Tested up to: 6.3.1
-* Stable tag: 0.2.8
+* Tested up to: 6.4-RC1
+* Stable tag: 0.2.9
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,8 +105,8 @@ Supports PHP 8.2, tested with WordPress 6.3.1 and WooCommerce 8.1.1
 
 ## Changelog 
 # 0.2.8 
-* Changed: Support PHP 8.2 #34
-* Tested: With WordPress 6.3.1 and WordPress Multi Site
-* Tested: With WooCommerce 8.1.1
+* Changed: Support PHP 8.1 and PHP 8.2 #34
+* Tested: With WordPress 6.4-RC1 and WordPress Multi Site
+* Tested: With WooCommerce 8.2.1
 * Tested: With PHPUnit 9.6
-* Tested: With PHP 8.2
+* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2

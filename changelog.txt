@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 0.2.8 = 
+Supports PHP 8.2, tested with WordPress 6.3.1 and WooCommerce 8.1.1
+
 = 0.2.7 = 
 Tested with WordPress 6.3 and WooCommerce 7.9.0
 
@@ -52,6 +55,13 @@ Based on oik-weightcountry-shipping.
 Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 == Changelog ==
+= 0.2.8 = 
+* Changed: Support PHP 8.2 #34
+* Tested: With WordPress 6.3.1 and WordPress Multi Site
+* Tested: With WooCommerce 8.1.1
+* Tested: With PHPUnit 9.6
+* Tested: With PHP 8.2
+
 = 0.2.7 = 
 * Tested: With WordPress 6.3 and WordPress Multi Site
 * Tested: With WooCommerce 7.9.0
