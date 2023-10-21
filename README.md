@@ -100,11 +100,11 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 5. Checkout shipping rates
 
 ## Upgrade Notice 
-# 0.2.8 
-Supports PHP 8.2, tested with WordPress 6.3.1 and WooCommerce 8.1.1
+# 0.2.9 
+Supports PHP 8.1 and PHP 8.2, tested with WordPress 6.4-RC1 and WooCommerce 8.2.1
 
 ## Changelog 
-# 0.2.8 
+# 0.2.9 
 * Changed: Support PHP 8.1 and PHP 8.2 #34
 * Tested: With WordPress 6.4-RC1 and WordPress Multi Site
 * Tested: With WooCommerce 8.2.1
