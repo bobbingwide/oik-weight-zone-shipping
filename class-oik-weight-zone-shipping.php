@@ -547,8 +547,10 @@ class OIK_Weight_Zone_Shipping extends WC_Shipping_Method {
 	 */
 	function convert_rates_display_to_rates_table( $rates_display ) {
 		$rates = array();
-		//bw_trace2( $rates_display, "rates display", false );
-		$rates_display = trim( $rates_display );
+		//bw_trace2( $rates_display, "rates_display" );
+        if ( $rates_display ) {
+	        $rates_display=trim( $rates_display );
+        }
 		if ( $rates_display ) {
 			$rates_display = (array) explode( "\n", $rates_display );
 			//bw_trace2( $rates_display, "rates display array", false );
