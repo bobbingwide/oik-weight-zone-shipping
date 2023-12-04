@@ -79,8 +79,20 @@ function oik_weight_zone_shipping_multi_rate_woocommerce_shipping_methods( $meth
  * We need to check the WooCommerce version
  * if WooCommerce is active.
  */
-function oik_weight_zone_shipping_loaded() { 
+function oik_weight_zone_shipping_loaded() {
+	add_action( 'before_woocommerce_init', 'oik_weight_zone_shipping_before_woocommerce_init' );
 	add_action( "woocommerce_init", "oik_weight_zone_shipping_woocommerce_init" );
+}
+
+/**
+ * Implements 'before_woocommerce_init' to declare HPOS compatibility.
+ *
+ * https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book
+ */
+function oik_weight_zone_shipping_before_woocommerce_init( ) {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
 }
 
 /** 
