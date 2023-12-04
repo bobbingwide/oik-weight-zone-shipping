@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 * Requires at least: 5.6
-* Tested up to: 6.4-RC3
-* Stable tag: 0.2.10
+* Tested up to: 6.4.1
+* Stable tag: 0.2.11
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,13 +100,14 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 5. Checkout shipping rates
 
 ## Upgrade Notice 
-# 0.2.10 
-Supports PHP 8.1 and PHP 8.2, tested with WordPress 6.4-RC1 and WooCommerce 8.2.1
+# 0.2.11 
+Update for WooCommerce High-Performance order storage compatibility
 
 ## Changelog 
-# 0.2.10 
-* Changed: Support PHP 8.1 and PHP 8.2 #34
-* Tested: With WordPress 6.4-RC1 and WordPress Multisite
-* Tested: With WooCommerce 8.2.1
+# 0.2.11 
+* Changed: Declare WooCommerce High Performance order storage (HPOS) compatibility #35
+* Changed: Support PHP 8.3 #
+* Tested: With WordPress 6.4.1 and WordPress Multisite
+* Tested: With WooCommerce 8.3.1
 * Tested: With PHPUnit 9.6
-* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+* Tested: With PHP 8.0, PHP 8.1, PHP 8.2 and PHP 8.3
