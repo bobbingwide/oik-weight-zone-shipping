@@ -100,12 +100,12 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 
 == Upgrade Notice ==
 = 0.2.11 =
-Update for WooCommerce High-Performance order storage compatibility 
+Update for WooCommerce High-Performance Order Storage compatibility
 
 == Changelog ==
 = 0.2.11 =
-* Changed: Declare WooCommerce High Performance order storage (HPOS) compatibility #35
-* Changed: Support PHP 8.3 #
+* Changed: Declare WooCommerce High Performance Order Storage (HPOS) compatibility #35
+* Changed: Support PHP 8.3 #34
 * Tested: With WordPress 6.4.1 and WordPress Multisite
 * Tested: With WooCommerce 8.3.1
 * Tested: With PHPUnit 9.6
