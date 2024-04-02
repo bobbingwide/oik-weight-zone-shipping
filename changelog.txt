@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 0.2.11 =
+Update for WooCommerce High-Performance Order Storage compatibility
+
 = 0.2.10 =
 Supports PHP 8.1 and PHP 8.2, tested with WordPress 6.4-RC1 and WooCommerce 8.2.1
 
@@ -61,6 +64,14 @@ Based on oik-weightcountry-shipping.
 Tested with WooCommerce 2.6.0 and above and WordPress 4.5.3 and above.
 
 == Changelog ==
+= 0.2.11 =
+* Changed: Declare WooCommerce High Performance Order Storage (HPOS) compatibility #35
+* Changed: Support PHP 8.3 #34
+* Tested: With WordPress 6.4.1 and WordPress Multisite
+* Tested: With WooCommerce 8.3.1
+* Tested: With PHPUnit 9.6
+* Tested: With PHP 8.0, PHP 8.1, PHP 8.2 and PHP 8.3
+
 = 0.2.10 =
 * Changed: Support PHP 8.1 and PHP 8.2 #34
 * Tested: With WordPress 6.4-RC1 and WordPress Multisite
