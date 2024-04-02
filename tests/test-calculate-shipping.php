@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017-2020
+<?php // (C) Copyright Bobbing Wide 2017-2024
 
 /**
  * @package oik-weight-zone-shipping
@@ -28,7 +28,7 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 			//echo . PHP_EOL .  'good' . PHP_EOL;
 		}
 		//oik_require( "tests/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
-		oik_require( "tests/legacy/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
+		//oik_require( "tests/legacy/framework/helpers/class-wc-helper-product.php", "woocommerce-source" );
 		
 		if ( !did_action( "woocommerce_init" ) ) {	
 			gob();
@@ -61,12 +61,14 @@ class Tests_calculate_shipping extends BW_UnitTestCase {
 	/**
 	 * Add products to the cart
 	 *
-	 * WC_Helper_Product sets the weight to 1.1.
+	 * Note use of hardcoded product ID.
+	 * wc_get_product() returns the current weight of the product
 	 * We need to update to 0.1 and save().
 	 */
 	function add_to_cart( $qty=1 ) {
 
-		$product = WC_Helper_Product::create_simple_product();
+		//$product = WC_Helper_Product::create_simple_product();
+		$product = wc_get_product( 3065 );
 		bw_trace2( $product, "product" );
 		// set_weight() is in 2.7.. which will become 3.0.0
 		$product->set_weight( 0.1 );
