@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
 Requires at least: 5.6
-Tested up to: 6.5-RC3
+Tested up to: 6.5
 Stable tag: 0.2.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,7 +46,7 @@ Each shipping zone can contain multiple shipping methods with rates that apply t
 1. Set your delivery rates for each Shipping zone in WooCommerce->Settings->Shipping
 
 = Which version of WooCommerce does this work on? =
-Now tested up to WooCommerce 7.9.0
+Now tested up to WooCommerce 8.7.0
 
 = What is the separator for the shipping rate table? = 
 
@@ -105,7 +105,7 @@ Tested with WooCommerce 8.7.0 and WordPress 6.5
 == Changelog ==
 = 0.2.12 =
 * Changed: Update PHPUnit tests #30
-* Tested: With WordPress 6.5-RC3 and WordPress Multisite
+* Tested: With WordPress 6.5 and WordPress Multisite
 * Tested: With WooCommerce 8.7.0
 * Tested: With PHPUnit 9.6
 * Tested: With PHP 8.3
