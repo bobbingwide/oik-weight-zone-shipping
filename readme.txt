@@ -1,10 +1,10 @@
 === Weight zone shipping for WooCommerce ===
 Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
-Tags: shipping, weight, zone, woocommerce, multi rate, shipping classes
+Tags: shipping, weight, zone, woocommerce, multi-rate
 Requires at least: 5.6
-Tested up to: 6.5
-Stable tag: 0.2.12
+Tested up to: 6.8.2
+Stable tag: 0.2.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,7 +89,7 @@ e.g. UK second class, UK first class.
 = Are there any other FAQs? =
 
 Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins.com/oik-plugins/oik-weight-zone-shipping/?oik-tab=faq)
-																													
+
 
 == Screenshots ==
 1. Add Shipping Method for Weight Zone
@@ -99,13 +99,12 @@ Yes. See [oik weight zone shipping for WooCommerce FAQS](https://www.oik-plugins
 5. Checkout shipping rates
 
 == Upgrade Notice ==
-= 0.2.12 =
-Tested with WooCommerce 8.7.0 and WordPress 6.5
+= 0.2.13 =
+Tested with WooCommerce 10.1.2 and WordPress 6.8.2
 
 == Changelog ==
-= 0.2.12 =
-* Changed: Update PHPUnit tests #30
-* Tested: With WordPress 6.5 and WordPress Multisite
-* Tested: With WooCommerce 8.7.0
+= 0.2.13 =
+* Tested: With WordPress 6.8.2 and WordPress Multisite
+* Tested: With WooCommerce 10.1.2
 * Tested: With PHPUnit 9.6
 * Tested: With PHP 8.3
